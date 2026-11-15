@@ -1,26 +1,22 @@
 {
-  "version": "0.5.1",
+  "version": "0.5.2",
   "date": "2026-11-15",
   "notes": [
-    "NEXUS Lab live: every PC of the room in one video, 30 frames a second",
-    "Create a lab from your phone and watch it from anywhere",
-    "Blocked apps close right away with a message saying why",
-    "Rules: set the exact minute, or start in 2 minutes"
+    "Test update: checks that NEXUS updates itself from inside the app",
+    "Same features as 0.5.1"
   ],
   "notesSq": [
-    "NEXUS Lab live: çdo kompjuter i sallës në një video, 30 kuadro në sekondë",
-    "Krijo një laborator nga telefoni dhe shikoje nga kudo",
-    "Aplikacionet e bllokuara mbyllen menjëherë me një mesazh pse",
-    "Rregullat: zgjidh minutën e saktë ose fillo pas 2 minutash"
+    "Përditësim prove: kontrollon që NEXUS përditësohet vetë nga aplikacioni",
+    "Të njëjtat veçori si 0.5.1"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.1/NEXUS-Agent-Setup-0.5.1.exe",
-    "sha256": "be18b2f148cc0c72a8ee6baac06be4ace31363494dcb8ae0967c4598199aa6c5",
-    "bytes": 89148907
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.2/NEXUS-Agent-Setup-0.5.2.exe",
+    "sha256": "914ba4cdd226499ed9c726066acf6321278b1ac0c14760c3b9fabc8c2efb14d3",
+    "bytes": 89154457
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.1/NEXUS-0.5.1.apk",
-    "sha256": "cdf4c63776431665c472c326466082119035425ad26efab62e4561ba8e14ed08",
-    "bytes": 48012181
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.2/NEXUS-0.5.2.apk",
+    "sha256": "2e19f3fc403f94ed74965c7150b42af34e8ace251a5c24f76faaa449f426c96c",
+    "bytes": 48046777
   }
 }
