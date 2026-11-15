@@ -1,0 +1,26 @@
+{
+  "version": "0.5.1",
+  "date": "2026-11-15",
+  "notes": [
+    "NEXUS Lab live: every PC of the room in one video, 30 frames a second",
+    "Create a lab from your phone and watch it from anywhere",
+    "Blocked apps close right away with a message saying why",
+    "Rules: set the exact minute, or start in 2 minutes"
+  ],
+  "notesSq": [
+    "NEXUS Lab live: çdo kompjuter i sallës në një video, 30 kuadro në sekondë",
+    "Krijo një laborator nga telefoni dhe shikoje nga kudo",
+    "Aplikacionet e bllokuara mbyllen menjëherë me një mesazh pse",
+    "Rregullat: zgjidh minutën e saktë ose fillo pas 2 minutash"
+  ],
+  "windows": {
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.1/NEXUS-Agent-Setup-0.5.1.exe",
+    "sha256": "be18b2f148cc0c72a8ee6baac06be4ace31363494dcb8ae0967c4598199aa6c5",
+    "bytes": 89148907
+  },
+  "android": {
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.1/NEXUS-0.5.1.apk",
+    "sha256": "cdf4c63776431665c472c326466082119035425ad26efab62e4561ba8e14ed08",
+    "bytes": 48012181
+  }
+}
