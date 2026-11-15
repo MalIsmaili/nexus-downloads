@@ -2,171 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXUS — Your devices. One ecosystem.</title>
-<meta name="description" content="NEXUS connects your Android phone and your Windows PC: control, wake, lock, clean and care for your PC from anywhere. Free download.">
-<meta name="theme-color" content="#0E1014">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEXUS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="NEXUS turns your Android phone into the remote for your Windows PC. Wake it from anywhere, lock it when you leave, and let it take care of itself overnight. Free.">
+<meta name="theme-color" content="#0C0E12">
+<meta property="og:title" content="NEXUS — Your PC, from your phone">
+<meta property="og:description" content="Wake, lock, control and care for your Windows PC from your Android phone. Free download.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230B1030'/%3E%3Cg transform='rotate(-18 52 49)'%3E%3Cellipse cx='52' cy='49' rx='43' ry='15.5' fill='none' stroke='%232DD4BF' stroke-width='6'/%3E%3C/g%3E%3Cpath d='M30 78V24h13l18 30V24h13v54H61L43 48v30z' fill='%23818CF8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
+/* Layout: a live phone-drives-PC demo opens the page; below it, plain sections that each answer one question, ending at the two installers. */
 :root{
-  --bg:#0E1014; --bg2:#14171D; --card:#181C23; --line:#262B35; --ink:#ECEEF3; --mute:#9097A6;
+  --bg:#0C0E12; --bg2:#12151B; --card:#171B22; --line:#252A34; --line2:#323947;
+  --ink:#EDEFF4; --mute:#939AAA; --dim:#646B7B;
   --indigo:#8B93FF; --teal:#2DD4BF; --navy:#0B1030;
-  --r:22px; --ease:cubic-bezier(.2,.8,.2,1);
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:Inter,"Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r:20px; --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 a{color:inherit;text-decoration:none}
-.mono{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.grad{background:linear-gradient(100deg,var(--indigo),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
-
-/* Intro */
-#intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
-#intro.done{opacity:0;visibility:hidden}
-#intro svg{width:132px;height:132px}
-#intro .ring{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 1.1s var(--ease) forwards}
-#intro .n{opacity:0;transform:scale(.85);transform-origin:50% 50%;animation:pop .6s .55s var(--ease) forwards}
-#intro .word{margin-top:22px;text-align:center;font-weight:800;letter-spacing:.42em;font-size:20px;opacity:0;animation:up .6s .95s var(--ease) forwards;padding-left:.42em}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes pop{to{opacity:1;transform:none}}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+.teal{color:var(--teal)}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(14,16,20,.72);border-bottom:1px solid transparent;transition:border-color .3s}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(12,14,18,.75);border-bottom:1px solid transparent;transition:border-color .3s}
 nav.s{border-color:var(--line)}
-nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2em}
+nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font:800 17px var(--display);letter-spacing:.18em}
 .brand svg{width:30px;height:30px}
 .links{display:flex;gap:26px;margin-left:auto;color:var(--mute);font-size:14px;font-weight:500}
 .links a:hover{color:var(--ink)}
-.lang{border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:none;color:var(--ink);cursor:pointer;font:600 12px Inter}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;transition:transform .25s var(--ease),box-shadow .25s,background .25s}
+.lang{border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:none;cursor:pointer;font:600 12px var(--body)}
+.lang:hover{border-color:var(--line2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s,background .25s}
 .btn:hover{transform:translateY(-2px)}
-.btn.p{background:var(--indigo);color:#0B0E1A;box-shadow:0 10px 30px -10px rgba(139,147,255,.6)}
-.btn.g{border:1px solid var(--line);background:var(--card)}
-.btn.g:hover{border-color:#3A4150}
-.btn svg{width:18px;height:18px}
+.btn.p{background:var(--indigo);color:#0A0D1C;box-shadow:0 12px 32px -12px rgba(139,147,255,.7)}
+.btn.g{border-color:var(--line);background:var(--card)}
+.btn.g:hover{border-color:var(--line2)}
+.btn svg{width:18px;height:18px;flex:none}
 nav .btn{padding:9px 16px;font-size:14px}
 
 /* Hero */
-.hero{position:relative;padding:90px 0 60px;text-align:center}
-.glow{position:absolute;inset:-200px 0 auto;height:700px;pointer-events:none;
-  background:radial-gradient(500px 300px at 35% 40%,rgba(139,147,255,.20),transparent 70%),radial-gradient(500px 300px at 65% 50%,rgba(45,212,191,.14),transparent 70%)}
-.pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:6px 14px 6px 8px;font-size:13px;color:var(--mute)}
-.pill b{background:rgba(45,212,191,.14);color:var(--teal);border-radius:99px;padding:2px 9px;font-size:12px}
-h1{font-size:clamp(42px,7.4vw,88px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:26px auto 22px;max-width:900px}
-.lead{color:var(--mute);font-size:clamp(17px,2vw,20px);max-width:640px;margin:0 auto 36px}
-.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.note{margin-top:16px;color:var(--mute);font-size:13px}
+.hero{position:relative;padding:72px 0 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-260px -10% auto;height:760px;pointer-events:none;
+  background:radial-gradient(520px 320px at 28% 45%,rgba(139,147,255,.17),transparent 70%),radial-gradient(520px 320px at 78% 55%,rgba(45,212,191,.11),transparent 70%)}
+.hgrid{position:relative;display:grid;grid-template-columns:1fr 1.08fr;gap:48px;align-items:center}
+.hgrid>*{min-width:0}
+.pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:5px 14px 5px 6px;font-size:13px;color:var(--mute)}
+.pill b{background:rgba(45,212,191,.14);color:var(--teal);border-radius:99px;padding:2px 9px;font:500 11px var(--mono);letter-spacing:.06em}
+h1{font-size:clamp(44px,6.4vw,84px);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:22px 0 22px}
+h1 em{font-style:normal;color:var(--indigo)}
+.lead{color:var(--mute);font-size:clamp(17px,1.6vw,19px);max-width:34em;margin-bottom:32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.note{margin-top:16px;color:var(--dim);font-size:13px}
 
-/* Devices visual */
-.stage{position:relative;margin:70px auto 0;max-width:980px;height:440px}
-.pc{position:absolute;left:0;right:120px;top:0;height:400px;border-radius:18px;background:var(--bg2);border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.7);overflow:hidden}
-.bar{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line)}
-.bar i{width:10px;height:10px;border-radius:50%;background:#2A2F3A}
-.bar span{margin-left:12px;color:var(--mute)}
-.pcbody{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:20px;text-align:left}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
-.tile .k{color:var(--mute);font-size:12px}
-.tile .v{font-size:26px;font-weight:700;margin-top:4px}
-.meter{height:6px;border-radius:9px;background:#242935;margin-top:12px;overflow:hidden}
-.meter i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--indigo),var(--teal));animation:m 3.5s ease-in-out infinite alternate}
+/* Demo: phone drives PC */
+.demo{position:relative;height:470px}
+.pc{position:absolute;left:0;right:96px;top:10px;height:330px;border-radius:16px;background:#07080B;border:1px solid var(--line2);padding:9px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.pc::after{content:"";position:absolute;left:38%;right:38%;bottom:-46px;height:46px;background:linear-gradient(#1A1E26,#12151B);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+.pc::before{content:"";position:absolute;left:28%;right:28%;bottom:-52px;height:7px;border-radius:6px;background:#1E232C}
+.screen{position:relative;height:100%;border-radius:9px;overflow:hidden;background:linear-gradient(140deg,#151A2C,#0F1A1E)}
+.view{position:absolute;inset:0;opacity:0;transition:opacity .5s var(--ease)}
+.view.on{opacity:1}
+.desk{padding:14px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:10px}
+.win{background:rgba(23,27,34,.92);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.win .k{color:var(--mute);font-size:11px}
+.win .v{font:700 20px var(--display);margin-top:2px;font-variant-numeric:tabular-nums}
+.meter{height:5px;border-radius:9px;background:#242935;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--indigo),var(--teal));animation:m 3.4s ease-in-out infinite alternate}
 @keyframes m{from{width:var(--a)}to{width:var(--b)}}
-.wide{grid-column:span 2}
-.spark{height:70px;margin-top:8px;width:100%}
-.phone{position:absolute;right:0;bottom:0;width:230px;height:440px;border-radius:38px;background:#07080B;border:1px solid #2A2F3A;padding:10px;box-shadow:0 40px 90px -20px rgba(0,0,0,.8)}
-.scr{height:100%;border-radius:29px;background:var(--bg);padding:26px 16px 16px;text-align:left;position:relative;overflow:hidden}
-.scr h4{font-size:13px;color:var(--mute);font-weight:500}
-.scr .pcn{font-weight:700;font-size:18px;margin:2px 0 14px;display:flex;align-items:center;gap:8px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(45,212,191,.6);animation:ping 2s infinite}
-@keyframes ping{70%{box-shadow:0 0 0 9px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
-.qa{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.qa div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;font-size:12px;font-weight:600}
-.qa svg{width:18px;height:18px;display:block;margin-bottom:6px;color:var(--indigo)}
-.qa div:nth-child(even) svg{color:var(--teal)}
-.toast{position:absolute;left:12px;right:12px;bottom:14px;background:#1D222B;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:11.5px;transform:translateY(130%);animation:toast 6s 2.5s infinite}
-.toast b{display:block;font-size:12px}
-@keyframes toast{0%,100%{transform:translateY(130%)}12%,70%{transform:none}}
+.win.big{grid-column:span 3;display:flex;flex-direction:column}
+.win.big svg{flex:1;width:100%;margin-top:6px}
+.task{position:absolute;left:0;right:0;bottom:0;height:26px;background:rgba(10,12,16,.85);display:flex;align-items:center;justify-content:center;gap:8px}
+.task i{width:13px;height:13px;border-radius:4px;background:#2A3040}
+.task i:nth-child(2){background:var(--indigo)}
+.lock{display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 40%,#1B2140,#0B0E16)}
+.lock .t{font:700 54px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.lock .d{color:var(--mute);font-size:13px;margin-top:6px}
+.lock .ico{width:30px;height:30px;margin:0 auto 14px;color:var(--teal)}
+.off{background:#020203}
+.off .led{position:absolute;right:14px;bottom:12px;width:6px;height:6px;border-radius:50%;background:#F5A524;opacity:.8;animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.15}}
+.slide{display:grid;place-items:center;background:#F4F5F8;color:#12151B;text-align:center}
+.slide h5{font:800 30px/1.05 var(--display);letter-spacing:-.02em}
+.slide p{color:#5A6170;font-size:13px;margin-top:8px}
+.slide .no{position:absolute;right:14px;bottom:10px;font:500 11px var(--mono);color:#8A90A0}
+.laser{position:absolute;width:12px;height:12px;border-radius:50%;background:#FF3B5C;box-shadow:0 0 14px 4px rgba(255,59,92,.6);left:30%;top:62%;animation:laser 4s ease-in-out infinite}
+@keyframes laser{25%{left:62%;top:58%}50%{left:56%;top:40%}75%{left:36%;top:44%}}
+
+.phone{position:absolute;right:0;bottom:0;width:214px;height:430px;border-radius:36px;background:#07080B;border:1px solid var(--line2);padding:9px;box-shadow:0 40px 90px -20px rgba(0,0,0,.85)}
+.phone::before{content:"";position:absolute;top:17px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#15181E;z-index:2}
+.scr{height:100%;border-radius:28px;background:var(--bg);padding:34px 14px 14px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.scr .h{color:var(--mute);font-size:11.5px}
+.pcn{font:700 17px var(--display);margin:1px 0 14px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(45,212,191,.55)}70%,100%{box-shadow:0 0 0 9px rgba(45,212,191,0)}}
+.dot.asleep{background:#F5A524;animation:none}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.act{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;font-size:12px;font-weight:600;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
+.act:hover{border-color:var(--line2)}
+.act:active{transform:scale(.97)}
+.act svg{width:18px;height:18px;display:block;margin-bottom:6px;color:var(--indigo)}
+.act:nth-child(even) svg{color:var(--teal)}
+.act.on{border-color:var(--indigo);background:rgba(139,147,255,.1)}
+.hint{margin-top:auto;color:var(--dim);font-size:11px;text-align:center}
+.toast{position:absolute;left:10px;right:10px;bottom:10px;background:#1D222B;border:1px solid var(--line2);border-radius:14px;padding:10px 12px;font-size:11.5px;color:var(--mute);transform:translateY(140%);transition:transform .45s var(--ease)}
+.toast.on{transform:none}
+.toast b{display:block;color:var(--ink);font-size:12px}
 
 /* Sections */
-section{padding:110px 0}
+section{padding-block:104px}
 .eyebrow{color:var(--teal)}
-h2{font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin:12px 0 16px;max-width:760px}
-.sub{color:var(--mute);font-size:18px;max-width:620px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px}
-.f{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:border-color .3s,transform .4s var(--ease),opacity .8s var(--ease)}
-.f:hover{border-color:#3A4150}
-.ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(139,147,255,.12);color:var(--indigo);margin-bottom:20px}
-.f:nth-child(3n+2) .ic{background:rgba(45,212,191,.12);color:var(--teal)}
-.ic svg{width:22px;height:22px}
-.f h3{font-size:19px;letter-spacing:-.01em;margin-bottom:8px}
-.f p{color:var(--mute);font-size:15px}
+h2{font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.03em;font-weight:800;margin:14px 0 16px;max-width:16em}
+.sub{color:var(--mute);font-size:18px;max-width:36em}
 
-.split{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
-.list{list-style:none;margin-top:30px;display:grid;gap:14px}
+.feat{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:52px}
+.f{grid-column:span 2;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:border-color .3s}
+.f:hover{border-color:var(--line2)}
+.f.w{grid-column:span 3}
+.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:rgba(139,147,255,.12);color:var(--indigo);margin-bottom:18px}
+.ic.t{background:rgba(45,212,191,.12);color:var(--teal)}
+.ic svg{width:22px;height:22px}
+.f h3{font-size:20px;letter-spacing:-.01em;margin-bottom:6px;font-weight:700}
+.f p{color:var(--mute);font-size:15px}
+.f .tag{display:inline-block;margin-top:14px;font:500 11px var(--mono);letter-spacing:.06em;color:var(--teal);background:rgba(45,212,191,.1);border-radius:6px;padding:3px 8px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split>*{min-width:0}
+.list{list-style:none;margin-top:28px;display:grid;gap:16px}
 .list li{display:flex;gap:14px;align-items:flex-start;color:var(--mute)}
-.list li b{color:var(--ink);display:block}
+.list li b{color:var(--ink);display:block;font-weight:600}
 .chk{flex:none;width:24px;height:24px;border-radius:8px;background:rgba(45,212,191,.14);color:var(--teal);display:grid;place-items:center;margin-top:2px}
 .chk svg{width:14px;height:14px}
-.panel{background:var(--bg2);border:1px solid var(--line);border-radius:26px;padding:26px}
-.rule{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
-.rule .t{font-family:"JetBrains Mono",monospace;color:var(--indigo);font-size:13px;min-width:54px}
-.rule .d{flex:1;font-size:14px}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:22px}
+.panel .mono{color:var(--dim);margin:4px 4px 16px;display:block}
+.rule{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px 15px;margin-bottom:9px}
+.rule .t{font:500 13px var(--mono);color:var(--indigo);min-width:52px}
+.rule .d{flex:1;font-size:14px;min-width:0}
 .rule .d small{display:block;color:var(--mute);font-size:12.5px}
 .sw{flex:none;width:38px;height:22px;border-radius:99px;background:var(--teal);position:relative}
 .sw::after{content:"";position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff}
-.sw.off{background:#2A2F3A}.sw.off::after{right:auto;left:3px}
+.sw.x{background:#2A2F3A}.sw.x::after{right:auto;left:3px}
+.summary{margin-top:14px;border:1px dashed var(--line2);border-radius:15px;padding:14px 15px;font-size:13px;color:var(--mute)}
+.summary b{color:var(--ink);display:block;font-size:13.5px;margin-bottom:2px}
 
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px;counter-reset:s}
-.step{position:relative;padding:30px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(180deg,var(--bg2),transparent)}
-.step::before{counter-increment:s;content:"0" counter(s);font:500 13px "JetBrains Mono";color:var(--teal)}
-.step h3{margin:18px 0 8px;font-size:20px}
-.step p{color:var(--mute);font-size:15px}
+.sec{border-radius:30px;border:1px solid var(--line);background:radial-gradient(640px 300px at 88% 0%,rgba(139,147,255,.12),transparent 70%),var(--bg2);padding:60px}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.s{background:rgba(12,14,18,.6);border:1px solid var(--line);border-radius:18px;padding:22px}
+.s h3{font-size:16.5px;margin-bottom:6px;font-weight:700}
+.s p{color:var(--mute);font-size:14px}
 
-.sec{position:relative;border-radius:32px;border:1px solid var(--line);background:radial-gradient(600px 300px at 85% 0%,rgba(139,147,255,.13),transparent 70%),var(--bg2);padding:64px;overflow:hidden}
-.sec .grid{grid-template-columns:repeat(4,1fr);margin-top:40px}
-.sec .f{background:rgba(14,16,20,.6)}
-.sec .f h3{font-size:16px}
-.sec .f p{font-size:14px}
+/* Download */
+.dl h2{margin-left:auto;margin-right:auto;text-align:center}
+.dl .sub{margin:0 auto;text-align:center}
+.dl .eyebrow{display:block;text-align:center}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.dc{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;transition:border-color .3s}
+.dc.rec{border-color:rgba(139,147,255,.55);box-shadow:0 0 0 4px rgba(139,147,255,.07)}
+.dc .top{display:flex;gap:16px;align-items:center}
+.dc .os{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(139,147,255,.12);color:var(--indigo);flex:none}
+.dc:nth-child(2) .os{background:rgba(45,212,191,.12);color:var(--teal)}
+.dc .os svg{width:28px;height:28px}
+.dc h3{font-size:22px;font-weight:700}
+.dc .meta{color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums}
+.badge{margin-left:auto;align-self:flex-start;font:500 11px var(--mono);letter-spacing:.06em;color:var(--indigo);background:rgba(139,147,255,.12);border-radius:6px;padding:4px 8px;visibility:hidden}
+.dc.rec .badge{visibility:visible}
+.steps{list-style:none;counter-reset:s;margin:24px 0 26px;display:grid;gap:12px}
+.steps li{counter-increment:s;display:flex;gap:12px;color:var(--mute);font-size:14.5px}
+.steps li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font:500 11px var(--mono);color:var(--ink);margin-top:1px}
+.steps b{color:var(--ink);font-weight:600}
+.dc .btn{margin-top:auto;width:100%}
+.dnote{margin-top:22px;text-align:center;color:var(--dim);font-size:13px}
+.dnote a{text-decoration:underline;text-underline-offset:3px}
+.dnote a:hover{color:var(--ink)}
 
-.dl{text-align:center}
-.dl h2,.dl .sub{margin-left:auto;margin-right:auto}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin:48px auto 0;text-align:left}
-.dc{display:flex;gap:18px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .3s,opacity .8s var(--ease),transform .8s var(--ease)}
-.dc:hover{border-color:var(--indigo)}
-.dc .ic{margin:0;width:56px;height:56px;border-radius:16px;flex:none}
-.dc .ic svg{width:28px;height:28px}
-.dc h3{font-size:18px}
-.dc p{color:var(--mute);font-size:13.5px}
-.dc .arr{margin-left:auto;color:var(--mute);font-size:20px}
-
-footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mute);font-size:14px}
+footer{border-top:1px solid var(--line);padding-block:36px;color:var(--mute);font-size:14px}
 footer .wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 footer .brand{color:var(--ink);font-size:14px}
-footer .r{margin-left:auto}
+footer .r{margin-left:auto;color:var(--dim)}
 
-.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.rv{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv:not(.in){opacity:.001;transform:translateY(22px)}
 
-@media (max-width:900px){
+@media (max-width:980px){
+  .hgrid{grid-template-columns:1fr;gap:28px}
+  .demo{max-width:620px;width:100%;margin:0 auto}
   .links{display:none}.lang{margin-left:auto}
-  .grid,.steps,.sec .grid{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr}.f,.f.w{grid-column:span 1}
   .split{grid-template-columns:1fr;gap:40px}
+  .sgrid{grid-template-columns:1fr 1fr}
   .sec{padding:36px 22px}
-  .pc{right:60px}.pcbody{grid-template-columns:1fr 1fr}.pcbody .hide{display:none}
 }
-@media (max-width:600px){
-  .wrap{padding:0 16px}
+@media (max-width:640px){
   nav .btn{display:none}
-  .grid,.steps,.sec .grid,.cards{grid-template-columns:1fr}
-  section{padding:80px 0}
-  .stage{height:450px}.pc{display:none}.phone{left:50%;right:auto;margin-left:-115px}
+  .hero{padding-top:44px}
+  .demo{height:450px}
+  .pc{display:none}
+  .phone{left:50%;right:auto;margin-left:-107px}
+  .feat,.sgrid,.cards{grid-template-columns:1fr}
+  section{padding-block:76px}
+  .dc{padding:22px}
+  footer .r{margin-left:0}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}#intro{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv:not(.in){opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -183,71 +234,69 @@ footer .r{margin-left:auto}
       <path d="M30 78V24h13l18 30V24h13v54H61L43 48v30z" fill="#818CF8" mask="url(#gap)"/>
       <g transform="rotate(-18 52 49)" clip-path="url(#ff)"><ellipse cx="52" cy="49" rx="43" ry="15.5" fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round"/></g>
     </symbol>
+    <symbol id="win" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7l-7-1zM11 12.5h10V21l-10-1.4z"/></symbol>
+    <symbol id="droid" viewBox="0 0 24 24"><path fill="currentColor" d="M7 9h10v8a1.5 1.5 0 0 1-1.5 1.5H15V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5h-.5A1.5 1.5 0 0 1 7 17zM5 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm12 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7.2 8a5 5 0 0 1 9.6 0z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+    <symbol id="i-slides" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5 9-10"/></symbol>
   </defs>
 </svg>
 
-<div id="intro" aria-hidden="true">
-  <div>
-    <svg viewBox="0 0 100 100">
-      <g transform="rotate(-18 52 49)"><ellipse class="ring" pathLength="200" cx="52" cy="49" rx="43" ry="15.5" fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round"/></g>
-      <path class="n" d="M30 78V24h13l18 30V24h13v54H61L43 48v30z" fill="#818CF8" mask="url(#gap)"/>
-    </svg>
-    <div class="word">NEXUS</div>
-  </div>
-</div>
-
 <nav id="nav">
   <div class="wrap">
-    <a href="#" class="brand"><svg><use href="#logo"/></svg>NEXUS</a>
+    <a href="#" class="brand" aria-label="NEXUS"><svg><use href="#logo"/></svg>NEXUS</a>
     <div class="links">
       <a href="#features" data-i="n1">Features</a>
       <a href="#autopilot" data-i="n2">Autopilot</a>
       <a href="#security" data-i="n3">Security</a>
       <a href="#download" data-i="n4">Download</a>
     </div>
-    <button class="lang" id="lang" aria-label="Language">SQ</button>
+    <button class="lang" id="lang" aria-label="Language / Gjuha">SQ</button>
     <a href="#download" class="btn p" data-i="get">Get NEXUS</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="glow"></div>
-  <div class="wrap" style="position:relative">
-    <span class="pill rv"><b>v0.5.0</b><span data-i="pill">Remote wipe · Presentation remote · Screen time</span></span>
-    <h1 class="rv"><span data-i="h1a">Your devices.</span><br><span class="grad" data-i="h1b">One ecosystem.</span></h1>
-    <p class="lead rv" data-i="lead">NEXUS turns your Android phone into the remote for your Windows PC. Wake it, lock it, control it, clean it and send it files — at home or from anywhere.</p>
-    <div class="ctas rv">
-      <a class="btn p" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-Agent-Setup-0.5.0.exe">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7l-7-1zM11 12.5h10V21l-10-1.4z"/></svg><span data-i="dw">Download for Windows</span></a>
-      <a class="btn g" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-0.5.0.apk">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v8a1.5 1.5 0 0 1-1.5 1.5H15V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5h-.5A1.5 1.5 0 0 1 7 17zM5 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm12 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7.2 8a5 5 0 0 1 9.6 0z"/></svg><span data-i="da">Download for Android</span></a>
-    </div>
-    <p class="note rv" data-i="note">Free · Windows 10/11 · Android 8+ · Set up in 2 minutes</p>
-
-    <div class="stage rv" aria-hidden="true">
-      <div class="pc">
-        <div class="bar"><i></i><i></i><i></i><span class="mono">NEXUS · My PC</span></div>
-        <div class="pcbody">
-          <div class="tile"><div class="k">CPU</div><div class="v">18%</div><div class="meter"><i style="--a:12%;--b:34%"></i></div></div>
-          <div class="tile"><div class="k" data-i="mem">Memory</div><div class="v">7.4 GB</div><div class="meter"><i style="--a:44%;--b:58%"></i></div></div>
-          <div class="tile hide"><div class="k">GPU</div><div class="v">41°C</div><div class="meter"><i style="--a:20%;--b:46%"></i></div></div>
-          <div class="tile wide"><div class="k" data-i="net">Network</div>
-            <svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8B93FF"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient></defs><path d="M0 55 C30 50 40 30 70 36 S120 60 150 40 200 12 230 26 270 44 300 18" fill="none" stroke="url(#sg)" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <div class="tile hide"><div class="k" data-i="disk">Disk freed</div><div class="v">12.6 GB</div><div class="k" style="margin-top:8px" data-i="tonight">Tonight, 03:00</div></div>
-        </div>
+  <div class="wrap hgrid">
+    <div>
+      <span class="pill rv"><b>v0.5.0</b><span data-i="pill">Remote wipe · Presentation remote · Screen time</span></span>
+      <h1 class="rv" data-i="h1">Your PC.<br><em>From your phone.</em></h1>
+      <p class="lead rv" data-i="lead">Wake it from across town. Lock it the moment you leave. Let it clean and update itself while you sleep. NEXUS links your Android phone and your Windows PC in two minutes.</p>
+      <div class="ctas rv">
+        <a class="btn p" href="#download"><svg><use href="#win"/></svg><span data-i="dw">Download for Windows</span></a>
+        <a class="btn g" href="#download"><svg><use href="#droid"/></svg><span data-i="da">Get the Android app</span></a>
       </div>
-      <div class="phone"><div class="scr">
-        <h4 data-i="conn">Connected</h4>
-        <div class="pcn"><span class="dot"></span><span data-i="mypc">My PC</span></div>
-        <div class="qa">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-i="q1">Lock</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg><span data-i="q2">Wake</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9l7 12 2-6 6-2z"/></svg><span data-i="q3">Mouse</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></svg><span data-i="q4">Clean</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4zM16 9a4 4 0 0 1 0 6"/></svg><span data-i="q5">Volume</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg><span data-i="q6">Send file</span></div>
+      <p class="note rv" data-i="note">Free · Windows 10 and 11 · Android 8 or newer · English and Shqip</p>
+    </div>
+
+    <div class="demo rv" id="demo">
+      <div class="pc" aria-hidden="true"><div class="screen">
+        <div class="view desk on" data-v="desk">
+          <div class="win"><div class="k">CPU</div><div class="v">18%</div><div class="meter"><i style="--a:12%;--b:34%"></i></div></div>
+          <div class="win"><div class="k" data-i="mem">Memory</div><div class="v">7.4 GB</div><div class="meter"><i style="--a:44%;--b:58%"></i></div></div>
+          <div class="win"><div class="k">GPU</div><div class="v">41 °C</div><div class="meter"><i style="--a:20%;--b:46%"></i></div></div>
+          <div class="win big"><div class="k" data-i="net">Network</div>
+            <svg viewBox="0 0 300 70" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8B93FF"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient></defs><path d="M0 55 C30 50 40 30 70 36 S120 60 150 40 200 12 230 26 270 44 300 18" fill="none" stroke="url(#sg)" stroke-width="3" stroke-linecap="round"/></svg></div>
+          <div class="task"><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="toast"><b data-i="t1">You left home</b><span data-i="t2">Your PC locked automatically.</span></div>
+        <div class="view lock" data-v="lock"><div><svg class="ico"><use href="#i-lock"/></svg><div class="t" id="clock">22:40</div><div class="d" data-i="lockd">Locked from your phone</div></div></div>
+        <div class="view off" data-v="off"><span class="led"></span></div>
+        <div class="view slide" data-v="slide"><div><h5 data-i="slh">Quarterly review</h5><p data-i="slp">Next slide from your phone. Laser pointer included.</p></div><span class="laser"></span><span class="no">4 / 12</span></div>
+      </div></div>
+
+      <div class="phone"><div class="scr">
+        <div class="h" id="pst" data-i="conn">Connected</div>
+        <div class="pcn"><span class="dot" id="pdot"></span><span data-i="mypc">My PC</span></div>
+        <div class="acts" role="group" aria-label="Try it">
+          <button class="act" data-a="lock"><svg><use href="#i-lock"/></svg><span data-i="q1">Lock</span></button>
+          <button class="act" data-a="off"><svg><use href="#i-moon"/></svg><span data-i="q2">Sleep</span></button>
+          <button class="act" data-a="desk"><svg><use href="#i-power"/></svg><span data-i="q3">Wake</span></button>
+          <button class="act" data-a="slide"><svg><use href="#i-slides"/></svg><span data-i="q4">Present</span></button>
+        </div>
+        <div class="hint" data-i="hint">Tap a button to try it</div>
+        <div class="toast" id="toast"><b id="tt">You left home</b><span id="td">Your PC locked automatically.</span></div>
       </div></div>
     </div>
   </div>
@@ -255,138 +304,171 @@ footer .r{margin-left:auto}
 
 <section id="features">
   <div class="wrap">
-    <span class="mono eyebrow rv" data-i="e1">Everything in one app</span>
-    <h2 class="rv" data-i="h2a">Your PC, in your pocket.</h2>
-    <p class="sub rv" data-i="s2a">One phone app and one small PC app. They find each other, pair with a QR code, and stay connected — encrypted, end to end.</p>
-    <div class="grid">
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg></div><h3 data-i="f1">Wake from anywhere</h3><p data-i="f1p">Turn your PC on over mobile data, miles away. A spare phone at home acts as a Wake Relay.</p></div>
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3 data-i="f2">Walk-away lock</h3><p data-i="f2p">Leave your desk or your house and the PC locks itself within seconds. No more open screens.</p></div>
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9l7 12 2-6 6-2z"/></svg></div><h3 data-i="f3">Full remote control</h3><p data-i="f3p">Touchpad mouse, keyboard, media keys, per-app volume, brightness, and closing frozen apps.</p></div>
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4h10l3 3v13H4V4z"/><path d="M12 10v6M9 13l3 3 3-3"/></svg></div><h3 data-i="f4">Files both ways</h3><p data-i="f4p">Send photos to the PC or documents to the phone. A clean NEXUS window asks before anything lands.</p></div>
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3 data-i="f5">Live PC health</h3><p data-i="f5p">CPU, memory, temperature and network at a glance, with alerts when something looks wrong.</p></div>
-      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div><h3 data-i="f6">Disk cleaner</h3><p data-i="f6p">See what eats your space and clear temp files, old downloads and the Recycle Bin from your phone.</p></div>
+    <span class="mono eyebrow rv" data-i="e1">What it does</span>
+    <h2 class="rv" data-i="h2a">One app for everything your PC needs.</h2>
+    <p class="sub rv" data-i="s2a">A phone app and a small PC app. They pair with a QR code and stay linked, on your Wi-Fi or across the world.</p>
+    <div class="feat">
+      <div class="f w rv"><div class="ic"><svg><use href="#i-power"/></svg></div><h3 data-i="f1">Wake it from anywhere</h3><p data-i="f1p">Turn your PC on over mobile data. A spare phone at home acts as the Wake Relay, so it works even when the PC is fully shut down.</p></div>
+      <div class="f w rv"><div class="ic t"><svg><use href="#i-lock"/></svg></div><h3 data-i="f2">Locks when you leave</h3><p data-i="f2p">Walk away from your desk or leave the house, and the PC locks within seconds. Come home and it wakes up for you.</p></div>
+      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 9l7 12 2-6 6-2z"/></svg></div><h3 data-i="f3">Full remote control</h3><p data-i="f3p">Touchpad, keyboard, media keys, volume per app, brightness, and closing frozen apps.</p></div>
+      <div class="f rv"><div class="ic t"><svg><use href="#i-slides"/></svg></div><h3 data-i="f4">Presentation remote</h3><p data-i="f4p">Next and back, laser pointer, black screen and a timer. Your phone becomes the clicker.</p><span class="tag" data-i="new">NEW IN 0.5</span></div>
+      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4h10l3 3v13H4V4z"/><path d="M12 10v6M9 13l3 3 3-3"/></g></svg></div><h3 data-i="f5">Files both ways</h3><p data-i="f5p">Send photos to the PC or documents to the phone. NEXUS asks before anything arrives.</p></div>
+      <div class="f rv"><div class="ic t"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></g></svg></div><h3 data-i="f6">Parental control</h3><p data-i="f6p">Daily screen time, bedtime and app limits. Unlock extra time from your phone, and get a summary every evening at 21:00.</p></div>
+      <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></g></svg></div><h3 data-i="f7">Disk cleaner</h3><p data-i="f7p">See what fills your drive and clear temp files, old downloads and the Recycle Bin.</p></div>
+      <div class="f rv"><div class="ic t"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></g></svg></div><h3 data-i="f8">NEXUS Lab</h3><p data-i="f8p">For classrooms and offices: one teacher PC sees the screens of every PC in the room.</p></div>
     </div>
   </div>
 </section>
 
-<section id="autopilot" style="padding-top:20px">
+<section id="autopilot" style="padding-top:8px">
   <div class="wrap split">
     <div>
       <span class="mono eyebrow rv" data-i="e2">Autopilot</span>
       <h2 class="rv" data-i="h2b">Leave it to NEXUS.</h2>
-      <p class="sub rv" data-i="s2b">Set it once. NEXUS takes care of your PC while you sleep, and gets it ready before you need it.</p>
+      <p class="sub rv" data-i="s2b">Set it once. NEXUS looks after your PC at night and has it ready before you need it.</p>
       <ul class="list">
-        <li class="rv"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><div><b data-i="l1">Overnight care</b><span data-i="l1p">Cleans temp files, installs updates, scans for viruses, then sleeps or shuts down.</span></div></li>
-        <li class="rv"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><div><b data-i="l2">Calendar link</b><span data-i="l2p">Wakes the PC before a meeting and opens the Meet, Zoom or Teams link for you.</span></div></li>
-        <li class="rv"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><div><b data-i="l3">Location rules</b><span data-i="l3p">Wake when you come home. Lock when you leave.</span></div></li>
-        <li class="rv"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><div><b data-i="l4">Your own rules</b><span data-i="l4p">Schedules and triggers: wake at 7:00, sleep at midnight, alert when it runs hot.</span></div></li>
+        <li class="rv"><span class="chk"><svg><use href="#i-check"/></svg></span><div><b data-i="l1">Overnight care</b><span data-i="l1p">Cleans temp files, installs updates, scans for viruses and checks your drives, then shuts down.</span></div></li>
+        <li class="rv"><span class="chk"><svg><use href="#i-check"/></svg></span><div><b data-i="l2">Ready for meetings</b><span data-i="l2p">Wakes the PC five minutes before a calendar event and opens the Meet, Zoom or Teams link.</span></div></li>
+        <li class="rv"><span class="chk"><svg><use href="#i-check"/></svg></span><div><b data-i="l3">Pick up where you left off</b><span data-i="l3p">After Windows starts, NEXUS offers to reopen the apps you had open.</span></div></li>
+        <li class="rv"><span class="chk"><svg><use href="#i-check"/></svg></span><div><b data-i="l4">Your own rules</b><span data-i="l4p">Wake at 07:00, sleep at midnight, get an alert when the GPU runs hot.</span></div></li>
       </ul>
     </div>
     <div class="panel rv" aria-hidden="true">
-      <div class="mono" style="color:var(--mute);margin-bottom:16px" data-i="rules">Rules</div>
+      <span class="mono" data-i="rules">Rules</span>
       <div class="rule"><span class="t">07:00</span><div class="d" data-i="r1">Wake my PC<small>Mon – Fri</small></div><span class="sw"></span></div>
-      <div class="rule"><span class="t">03:00</span><div class="d" data-i="r2">Leave it to NEXUS<small>Clean · Updates · Scan · Sleep</small></div><span class="sw"></span></div>
+      <div class="rule"><span class="t">05:00</span><div class="d" data-i="r2">Leave it to NEXUS<small>Clean · Updates · Scan · Shut down</small></div><span class="sw"></span></div>
       <div class="rule"><span class="t">HOME</span><div class="d" data-i="r3">Wake when I come home<small>Within 1 km</small></div><span class="sw"></span></div>
-      <div class="rule"><span class="t">AWAY</span><div class="d" data-i="r4">Lock when I leave<small>Instantly</small></div><span class="sw"></span></div>
-      <div class="rule"><span class="t">00:30</span><div class="d" data-i="r5">Sleep<small>Weekends</small></div><span class="sw off"></span></div>
+      <div class="rule"><span class="t">AWAY</span><div class="d" data-i="r4">Lock when I leave<small>Right away</small></div><span class="sw"></span></div>
+      <div class="rule"><span class="t">85 °C</span><div class="d" data-i="r5">GPU too hot<small>Notify me</small></div><span class="sw x"></span></div>
+      <div class="summary" data-i="sum"><b>Leave it to NEXUS: done</b>Freed 471 MB · Drives healthy · Virus scan: nothing found · Shutting down</div>
     </div>
   </div>
 </section>
 
-<section id="how" style="padding-top:20px">
-  <div class="wrap">
-    <span class="mono eyebrow rv" data-i="e3">Setup</span>
-    <h2 class="rv" data-i="h2c">Ready in two minutes.</h2>
-    <div class="steps">
-      <div class="step rv"><h3 data-i="st1">Install on your PC</h3><p data-i="st1p">Run the installer. NEXUS opens and shows a pairing code.</p></div>
-      <div class="step rv"><h3 data-i="st2">Install on your phone</h3><p data-i="st2p">Get the app, create your account and scan the code.</p></div>
-      <div class="step rv"><h3 data-i="st3">That's it</h3><p data-i="st3p">Your phone and PC are linked — on the same Wi-Fi or across the world.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="security" style="padding-top:20px">
+<section id="security" style="padding-top:8px">
   <div class="wrap">
     <div class="sec">
       <span class="mono eyebrow rv" data-i="e4">Private by design</span>
       <h2 class="rv" data-i="h2d">Only your phone can control your PC.</h2>
-      <p class="sub rv" data-i="s2d">Every device has its own key. Even our own server can't read your data or send commands in your name.</p>
-      <div class="grid">
-        <div class="f rv"><h3 data-i="x1">End-to-end encrypted</h3><p data-i="x1p">Phone and PC talk over an encrypted channel the cloud can't open.</p></div>
-        <div class="f rv"><h3 data-i="x2">Paired devices only</h3><p data-i="x2p">Keys are pinned at pairing. A stranger can't pretend to be your phone.</p></div>
-        <div class="f rv"><h3 data-i="x3">Direct when it can</h3><p data-i="x3p">At home, phone and PC connect straight to each other on your network.</p></div>
-        <div class="f rv"><h3 data-i="x4">You stay in charge</h3><p data-i="x4p">Incoming files always ask first. Unpair a device with one tap.</p></div>
+      <p class="sub rv" data-i="s2d">Every device has its own key. Our server passes messages along but can't read them or send commands in your name.</p>
+      <div class="sgrid">
+        <div class="s rv"><h3 data-i="x1">End-to-end encrypted</h3><p data-i="x1p">Phone and PC talk over a channel the server can't open.</p></div>
+        <div class="s rv"><h3 data-i="x2">Paired devices only</h3><p data-i="x2p">Keys are fixed at pairing, so no one can pretend to be your phone.</p></div>
+        <div class="s rv"><h3 data-i="x3">Remote wipe</h3><p data-i="x3p">PC stolen? Lock it and delete your private folders from your phone, with a 60-second countdown.</p></div>
+        <div class="s rv"><h3 data-i="x4">You stay in charge</h3><p data-i="x4p">Incoming files ask first. Unpair a device with one tap.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="download" class="dl" style="padding-top:20px">
+<section id="download" class="dl" style="padding-top:8px">
   <div class="wrap">
     <span class="mono eyebrow rv" data-i="e5">Free download</span>
-    <h2 class="rv" data-i="h2e">Get NEXUS on both devices.</h2>
-    <p class="sub rv" data-i="s2e">Install the PC app and the phone app, then scan the code. In English and Shqip.</p>
+    <h2 class="rv" data-i="h2e">Install NEXUS on both devices.</h2>
+    <p class="sub rv" data-i="s2e">Start with the PC. It shows a QR code, and the phone app scans it.</p>
     <div class="cards">
-      <a class="dc rv" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-Agent-Setup-0.5.0.exe">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7l-7-1zM11 12.5h10V21l-10-1.4z"/></svg></div>
-        <div><h3>Windows</h3><p data-i="dwp">Windows 10 / 11 · 28 MB · v0.5.0</p></div><span class="arr">↓</span></a>
-      <a class="dc rv" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-0.5.0.apk">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v8a1.5 1.5 0 0 1-1.5 1.5H15V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5h-.5A1.5 1.5 0 0 1 7 17zM5 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm12 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7.2 8a5 5 0 0 1 9.6 0z"/></svg></div>
-        <div><h3>Android</h3><p data-i="dap">Android 8+ · 46 MB · v0.5.0</p></div><span class="arr">↓</span></a>
+      <div class="dc rv" id="dc-win">
+        <div class="top"><div class="os"><svg><use href="#win"/></svg></div><div><h3>Windows</h3><div class="meta">Windows 10 / 11 · 64-bit · 28 MB · v0.5.0</div></div><span class="badge" data-i="rec">FOR THIS DEVICE</span></div>
+        <ol class="steps">
+          <li data-i="w1"><span>Open <b>NEXUS-Agent-Setup-0.5.0.exe</b>.</span></li>
+          <li data-i="w2"><span>If Windows says it protected your PC, click <b>More info</b>, then <b>Run anyway</b>.</span></li>
+          <li data-i="w3"><span>NEXUS opens and shows a pairing QR code. No admin rights needed.</span></li>
+        </ol>
+        <a class="btn p" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-Agent-Setup-0.5.0.exe"><svg><use href="#win"/></svg><span data-i="dwb">Download installer</span></a>
+      </div>
+      <div class="dc rv" id="dc-and">
+        <div class="top"><div class="os"><svg><use href="#droid"/></svg></div><div><h3>Android</h3><div class="meta">Android 8 or newer · 46 MB · v0.5.0</div></div><span class="badge" data-i="rec">FOR THIS DEVICE</span></div>
+        <ol class="steps">
+          <li data-i="a1"><span>Download <b>NEXUS-0.5.0.apk</b> on your phone.</span></li>
+          <li data-i="a2"><span>Open it. If asked, allow your browser to <b>install unknown apps</b>.</span></li>
+          <li data-i="a3"><span>Create your account and scan the QR code on your PC.</span></li>
+        </ol>
+        <a class="btn p" href="https://github.com/MalIsmaili/nexus-downloads/releases/latest/download/NEXUS-0.5.0.apk"><svg><use href="#droid"/></svg><span data-i="dab">Download app</span></a>
+      </div>
     </div>
-    <p class="note rv"><a href="https://github.com/MalIsmaili/nexus-downloads/releases" style="text-decoration:underline" data-i="all">All releases</a></p>
+    <p class="dnote rv"><span data-i="dn">Want to wake your PC from far away? Install the app on a spare phone that stays home and turn on Wake Relay.</span> · <a href="https://github.com/MalIsmaili/nexus-downloads/releases" data-i="all">All versions</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span class="brand"><svg style="width:22px;height:22px"><use href="#logo"/></svg>NEXUS</span>
-    <span data-i="tag">Your devices. One ecosystem.</span>
+    <span data-i="tag">Your PC, from your phone.</span>
     <span class="r">© 2026 NEXUS · v0.5.0</span>
   </div>
 </footer>
 
 <script>
+document.documentElement.classList.add('js');
 const SQ={n1:"Veçoritë",n2:"Autopilot",n3:"Siguria",n4:"Shkarko",get:"Merr NEXUS",
-pill:"Fshirje në distancë · Telekomandë prezantimi · Koha para ekranit",h1a:"Pajisjet e tua.",h1b:"Një ekosistem.",
-lead:"NEXUS e kthen telefonin tënd Android në telekomandën e kompjuterit Windows. Ndize, kyçe, kontrolloje, pastroje dhe dërgo skedarë — në shtëpi apo nga kudo.",
-dw:"Shkarko për Windows",da:"Shkarko për Android",note:"Falas · Windows 10/11 · Android 8+ · Gati për 2 minuta",
-mem:"Memoria",net:"Rrjeti",disk:"Hapësirë e liruar",tonight:"Sonte, 03:00",conn:"I lidhur",mypc:"Kompjuteri im",
-q1:"Kyç",q2:"Ndiz",q3:"Miu",q4:"Pastro",q5:"Zëri",q6:"Dërgo",t1:"Dole nga shtëpia",t2:"Kompjuteri u kyç automatikisht.",
-e1:"Gjithçka në një aplikacion",h2a:"Kompjuteri yt, në xhep.",s2a:"Një aplikacion në telefon dhe një i vogël në kompjuter. Gjejnë njëri-tjetrin, lidhen me një kod QR dhe qëndrojnë të lidhur — të enkriptuar nga skaji në skaj.",
-f1:"Ndize nga kudo",f1p:"Ndize kompjuterin me internet celular, nga larg. Një telefon rezervë në shtëpi bëhet Wake Relay.",
-f2:"Kyçje kur largohesh",f2p:"Largohu nga tavolina apo nga shtëpia dhe kompjuteri kyçet vetë brenda pak sekondash.",
+pill:"Fshirje në distancë · Telekomandë prezantimi · Koha para ekranit",
+h1:"Kompjuteri yt.<br><em>Nga telefoni yt.</em>",
+lead:"Ndize nga ana tjetër e qytetit. Kyçe sapo largohesh. Lëre të pastrohet dhe përditësohet vetë ndërsa ti fle. NEXUS lidh telefonin Android me kompjuterin Windows për dy minuta.",
+dw:"Shkarko për Windows",da:"Merr aplikacionin Android",note:"Falas · Windows 10 dhe 11 · Android 8 ose më i ri · Anglisht dhe shqip",
+mem:"Memoria",net:"Rrjeti",lockd:"Kyçur nga telefoni",slh:"Rishikimi tremujor",slp:"Sllajdi tjetër nga telefoni. Me tregues lazer.",
+conn:"I lidhur",mypc:"Kompjuteri im",q1:"Kyç",q2:"Gjumë",q3:"Ndiz",q4:"Prezanto",hint:"Prek një buton për ta provuar",
+e1:"Çfarë bën",h2a:"Një aplikacion për gjithçka që i duhet kompjuterit.",s2a:"Një aplikacion në telefon dhe një i vogël në kompjuter. Lidhen me një kod QR dhe qëndrojnë të lidhur, në Wi-Fi-n tënd apo në anën tjetër të botës.",
+f1:"Ndize nga kudo",f1p:"Ndize kompjuterin me internet celular. Një telefon rezervë në shtëpi bëhet Wake Relay, ndaj punon edhe kur kompjuteri është i fikur plotësisht.",
+f2:"Kyçet kur largohesh",f2p:"Largohu nga tavolina apo nga shtëpia dhe kompjuteri kyçet brenda pak sekondash. Kthehu në shtëpi dhe ndizet për ty.",
 f3:"Kontroll i plotë",f3p:"Miu me prekje, tastierë, muzikë, zëri për çdo aplikacion, ndriçimi dhe mbyllja e aplikacioneve të ngrira.",
-f4:"Skedarë në të dy anët",f4p:"Dërgo foto në kompjuter ose dokumente në telefon. Një dritare NEXUS të pyet para se të vijë diçka.",
-f5:"Gjendja e kompjuterit",f5p:"CPU, memoria, temperatura dhe rrjeti me një shikim, me njoftim kur diçka nuk shkon.",
-f6:"Pastruesi i diskut",f6p:"Shiko çfarë të zë vend dhe pastro skedarët e përkohshëm, shkarkimet e vjetra dhe koshin nga telefoni.",
-e2:"Autopilot",h2b:"Lëre te NEXUS.",s2b:"Vendose një herë. NEXUS kujdeset për kompjuterin ndërsa ti fle dhe e bën gati para se ta duash.",
-l1:"Kujdes gjatë natës",l1p:"Pastron skedarët e përkohshëm, instalon përditësimet, kontrollon për viruse, pastaj fle ose fiket.",
-l2:"Lidhja me kalendarin",l2p:"E ndez kompjuterin para takimit dhe hap lidhjen e Meet, Zoom ose Teams.",
-l3:"Rregulla sipas vendndodhjes",l3p:"Ndize kur vjen në shtëpi. Kyçe kur largohesh.",
-l4:"Rregullat e tua",l4p:"Orare dhe kushte: ndize në 7:00, fike në mesnatë, njoftim kur nxehet.",
-rules:"Rregullat",r1:"Ndize kompjuterin<small>E hënë – e premte</small>",r2:"Lëre te NEXUS<small>Pastrim · Përditësime · Skanim · Gjumë</small>",r3:"Ndize kur vij në shtëpi<small>Brenda 1 km</small>",r4:"Kyçe kur largohem<small>Menjëherë</small>",r5:"Gjumë<small>Fundjavë</small>",
-e3:"Instalimi",h2c:"Gati për dy minuta.",st1:"Instalo në kompjuter",st1p:"Hap instaluesin. NEXUS hapet dhe tregon një kod lidhjeje.",
-st2:"Instalo në telefon",st2p:"Merr aplikacionin, krijo llogarinë dhe skano kodin.",st3:"Kaq ishte",st3p:"Telefoni dhe kompjuteri janë të lidhur — në të njëjtin Wi-Fi apo në anën tjetër të botës.",
-e4:"Privatësia në themel",h2d:"Vetëm telefoni yt e kontrollon kompjuterin.",s2d:"Çdo pajisje ka çelësin e vet. As serveri ynë nuk mund të lexojë të dhënat ose të dërgojë komanda në emrin tënd.",
+f4:"Telekomandë prezantimi",f4p:"Para dhe mbrapa, tregues lazer, ekran i zi dhe kohëmatës. Telefoni bëhet klikuesi yt.",new:"E RE NË 0.5",
+f5:"Skedarë në të dy anët",f5p:"Dërgo foto në kompjuter ose dokumente në telefon. NEXUS pyet para se të vijë diçka.",
+f6:"Kontroll prindëror",f6p:"Koha ditore para ekranit, ora e gjumit dhe kufij për aplikacionet. Jep kohë shtesë nga telefoni dhe merr një përmbledhje çdo mbrëmje në 21:00.",
+f7:"Pastruesi i diskut",f7p:"Shiko çfarë e mbush diskun dhe pastro skedarët e përkohshëm, shkarkimet e vjetra dhe koshin.",
+f8:"NEXUS Lab",f8p:"Për klasa dhe zyra: një kompjuter i mësuesit sheh ekranet e të gjithë kompjuterëve në sallë.",
+e2:"Autopilot",h2b:"Lëre te NEXUS.",s2b:"Vendose një herë. NEXUS kujdeset për kompjuterin natën dhe e bën gati para se ta duash.",
+l1:"Kujdes gjatë natës",l1p:"Pastron skedarët e përkohshëm, instalon përditësimet, kontrollon për viruse dhe diskun, pastaj fiket.",
+l2:"Gati për takime",l2p:"E ndez kompjuterin pesë minuta para një takimi në kalendar dhe hap lidhjen e Meet, Zoom ose Teams.",
+l3:"Vazhdo aty ku e le",l3p:"Pasi ndizet Windows, NEXUS të ofron të rihapësh aplikacionet që kishe hapur.",
+l4:"Rregullat e tua",l4p:"Ndize në 07:00, fike në mesnatë, merr njoftim kur nxehet GPU-ja.",
+rules:"Rregullat",r1:"Ndize kompjuterin<small>E hënë – e premte</small>",r2:"Lëre te NEXUS<small>Pastrim · Përditësime · Skanim · Fikje</small>",r3:"Ndize kur vij në shtëpi<small>Brenda 1 km</small>",r4:"Kyçe kur largohem<small>Menjëherë</small>",r5:"GPU shumë e nxehtë<small>Më njofto</small>",
+sum:"<b>Lëre te NEXUS: u krye</b>U liruan 471 MB · Disqet në rregull · Skanimi: asgjë e gjetur · Po fiket",
+e4:"Privatësia në themel",h2d:"Vetëm telefoni yt e kontrollon kompjuterin.",s2d:"Çdo pajisje ka çelësin e vet. Serveri ynë i përcjell mesazhet, por nuk mund t'i lexojë ose të dërgojë komanda në emrin tënd.",
 x1:"Enkriptim nga skaji në skaj",x1p:"Telefoni dhe kompjuteri flasin në një kanal që serveri nuk e hap dot.",
-x2:"Vetëm pajisjet e lidhura",x2p:"Çelësat ruhen gjatë lidhjes. Një i huaj nuk mund të shtiret si telefoni yt.",
-x3:"Direkt kur mundet",x3p:"Në shtëpi, telefoni dhe kompjuteri lidhen drejtpërdrejt në rrjetin tënd.",
-x4:"Ti vendos",x4p:"Skedarët që vijnë gjithmonë pyesin më parë. Shkëput një pajisje me një prekje.",
-e5:"Shkarkim falas",h2e:"Merr NEXUS në të dy pajisjet.",s2e:"Instalo aplikacionin në kompjuter dhe në telefon, pastaj skano kodin. Në anglisht dhe shqip.",
-dwp:"Windows 10 / 11 · 28 MB · v0.5.0",dap:"Android 8+ · 46 MB · v0.5.0",all:"Të gjitha versionet",tag:"Pajisjet e tua. Një ekosistem."};
+x2:"Vetëm pajisjet e lidhura",x2p:"Çelësat fiksohen gjatë lidhjes, ndaj askush nuk mund të shtiret si telefoni yt.",
+x3:"Fshirje në distancë",x3p:"Të vodhën kompjuterin? Kyçe dhe fshi dosjet private nga telefoni, me numërim mbrapsht 60 sekonda.",
+x4:"Ti vendos",x4p:"Skedarët që vijnë pyesin më parë. Shkëput një pajisje me një prekje.",
+e5:"Shkarkim falas",h2e:"Instalo NEXUS në të dy pajisjet.",s2e:"Fillo me kompjuterin. Ai tregon një kod QR dhe aplikacioni në telefon e skanon.",
+rec:"PËR KËTË PAJISJE",
+w1:"<span>Hap <b>NEXUS-Agent-Setup-0.5.0.exe</b>.</span>",w2:"<span>Nëse Windows thotë se e mbrojti kompjuterin, kliko <b>More info</b>, pastaj <b>Run anyway</b>.</span>",w3:"<span>NEXUS hapet dhe tregon një kod QR. Nuk duhen të drejta administratori.</span>",dwb:"Shkarko instaluesin",
+a1:"<span>Shkarko <b>NEXUS-0.5.0.apk</b> në telefon.</span>",a2:"<span>Hape. Nëse të pyet, lejo shfletuesin të <b>instalojë aplikacione të panjohura</b>.</span>",a3:"<span>Krijo llogarinë dhe skano kodin QR në kompjuter.</span>",dab:"Shkarko aplikacionin",
+dn:"Do ta ndezësh kompjuterin nga larg? Instalo aplikacionin në një telefon rezervë që rri në shtëpi dhe aktivizo Wake Relay.",all:"Të gjitha versionet",tag:"Kompjuteri yt, nga telefoni yt."};
+const TOAST={en:{lock:["Locked","My PC is locked."],off:["Asleep","My PC went to sleep."],desk:["Awake","My PC is on and ready."],slide:["Presenting","Next, back and laser on your phone."],away:["You left home","Your PC locked automatically."]},
+sq:{lock:["U kyç","Kompjuteri im është kyçur."],off:["Në gjumë","Kompjuteri im fjeti."],desk:["I ndezur","Kompjuteri im është gati."],slide:["Po prezanton","Para, mbrapa dhe lazer në telefon."],away:["Dole nga shtëpia","Kompjuteri u kyç automatikisht."]}};
+const STATUS={en:{on:"Connected",off:"Asleep · wake from anywhere"},sq:{on:"I lidhur",off:"Në gjumë · ndize nga kudo"}};
+
 const els=[...document.querySelectorAll('[data-i]')];const EN={};els.forEach(e=>EN[e.dataset.i]=e.innerHTML);
 let lang='en';try{lang=localStorage.getItem('nexus-lang')||((navigator.language||'').startsWith('sq')?'sq':'en')}catch(e){}
 const btn=document.getElementById('lang');
-function apply(){const d=lang==='sq'?SQ:EN;els.forEach(e=>{const v=d[e.dataset.i];if(v)e.innerHTML=v});document.documentElement.lang=lang;btn.textContent=lang==='sq'?'EN':'SQ'}
-btn.onclick=()=>{lang=lang==='sq'?'en':'sq';try{localStorage.setItem('nexus-lang',lang)}catch(e){}apply()};apply();
+function apply(){const d=lang==='sq'?SQ:EN;els.forEach(e=>{const v=d[e.dataset.i]??EN[e.dataset.i];e.innerHTML=v});document.documentElement.lang=lang;btn.textContent=lang==='sq'?'EN':'SQ';status()}
+btn.onclick=()=>{lang=lang==='sq'?'en':'sq';try{localStorage.setItem('nexus-lang',lang)}catch(e){}apply()};
 
-const intro=document.getElementById('intro');
-let seen=false;try{seen=!!sessionStorage.getItem('nexus-intro')}catch(e){}
-setTimeout(()=>{intro.classList.add('done');try{sessionStorage.setItem('nexus-intro','1')}catch(e){}},seen?0:1900);
+/* Demo */
+let state='desk';
+const views=[...document.querySelectorAll('.view')],acts=[...document.querySelectorAll('.act')];
+const toast=document.getElementById('toast'),tt=document.getElementById('tt'),td=document.getElementById('td');
+const pst=document.getElementById('pst'),pdot=document.getElementById('pdot');
+function status(){const s=STATUS[lang]||STATUS.en;pst.textContent=state==='off'?s.off:s.on;pdot.classList.toggle('asleep',state==='off')}
+let tHide;
+function show(v,msg){state=v;views.forEach(x=>x.classList.toggle('on',x.dataset.v===v));acts.forEach(a=>a.classList.toggle('on',a.dataset.a===v&&v!=='desk'));
+  const [a,b]=(TOAST[lang]||TOAST.en)[msg||v];tt.textContent=a;td.textContent=b;toast.classList.add('on');clearTimeout(tHide);tHide=setTimeout(()=>toast.classList.remove('on'),2600);status()}
+const clock=document.getElementById('clock');
+function tick(){const d=new Date();clock.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+tick();setInterval(tick,20000);
+let auto=null;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+acts.forEach(a=>a.addEventListener('click',()=>{clearInterval(auto);auto=null;show(a.dataset.a)}));
+if(!reduce){const seq=[['lock','away'],['desk'],['slide'],['off'],['desk']];let i=0;
+  setTimeout(()=>{if(auto===false)return;show(...seq[i++]);auto=setInterval(()=>{show(...seq[i++%seq.length])},3600)},1600);
+  acts.forEach(a=>a.addEventListener('click',()=>{auto=false},{once:true}))}
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+/* Recommend the download for this device */
+const ua=navigator.userAgent||'';const mobile=/Android|iPhone|iPad/i.test(ua);
+document.getElementById(mobile?'dc-and':'dc-win').classList.add('rec');
+
+apply();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*60+'ms';io.observe(el)});
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),2500);
 const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>10),{passive:true});
 </script>
 </body>
