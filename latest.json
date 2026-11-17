@@ -1,24 +1,22 @@
 {
-  "version": "0.5.4",
+  "version": "0.5.5",
   "date": "2026-11-17",
   "notes": [
-    "Updates now appear on their own: when a new version is out, NEXUS pops it up for you — on both the phone and the PC — instead of waiting.",
-    "Classroom protection for schools: during install (for all users) you can turn on a protected mode so that while a teacher is monitoring, students on standard accounts cannot stop screen sharing, close the NEXUS agent, or uninstall it. Home installs are unchanged.",
-    "Teachers can start and end a monitoring session from the phone, protected by an administrator PIN."
+    "App lock: require your fingerprint or screen lock to open NEXUS — and again before a remote wipe — so a lost or handed-over phone can't control or wipe your PC. Turn it on in Settings › Device security.",
+    "Updates still pop up on their own on both the phone and the PC."
   ],
   "notesSq": [
-    "Përditësimet tani shfaqen vetë: kur del një version i ri, NEXUS ta nxjerr atë — si në telefon ashtu edhe në kompjuter — pa pritur.",
-    "Mbrojtje për klasat: gjatë instalimit (për të gjithë përdoruesit) mund ta aktivizoni një mënyrë të mbrojtur, që gjatë monitorimit nga mësuesi, nxënësit me llogari standarde nuk mund ta ndalojnë ndarjen e ekranit, ta mbyllin agjentin NEXUS, ose ta çinstalojnë atë. Instalimet shtëpiake mbeten të pandryshuara.",
-    "Mësuesit mund ta fillojnë dhe ta përfundojnë një seancë monitorimi nga telefoni, të mbrojtura me një PIN administratori."
+    "Kyçja e aplikacionit: kërko gjurmën e gishtit ose kyçjen e ekranit për ta hapur NEXUS — dhe përsëri para një fshirjeje në distancë — që një telefon i humbur ose i dhënë dikët të mos mund ta kontrollojë ose ta fshijë kompjuterin. Aktivizoje te Cilësimet › Siguria e pajisjes.",
+    "Përditësimet vazhdojnë të shfaqen vetë si në telefon ashtu edhe në kompjuter."
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.4/NEXUS-Agent-Setup-0.5.4.exe",
-    "sha256": "5374c39ffc74cb617774bab6f3de40fb4d1a0db4975f6263a1615a5d96eae97d",
-    "bytes": 89260556
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.5/NEXUS-Agent-Setup-0.5.5.exe",
+    "sha256": "c3b66650f3898bd7c3716f949414688b2f6121f40628ee35a768f747dd6e08e4",
+    "bytes": 89285131
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.4/NEXUS-0.5.4.apk",
-    "sha256": "905fa4e0f6b998a71c252298543e3f0df74ef7b5818f588e8a96f1e924241c40",
-    "bytes": 48038229
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.5/NEXUS-0.5.5.apk",
+    "sha256": "a72c88e57efc136ef4f30ec602fd33768e94a2fd52929001c71e502880633ebd",
+    "bytes": 48166714
   }
 }
