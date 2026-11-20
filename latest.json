@@ -1,22 +1,35 @@
 {
-  "version": "0.5.5",
-  "date": "2026-11-17",
+  "version": "0.5.6",
+  "date": "2026-11-20",
   "notes": [
-    "App lock: require your fingerprint or screen lock to open NEXUS — and again before a remote wipe — so a lost or handed-over phone can't control or wipe your PC. Turn it on in Settings › Device security.",
-    "Updates still pop up on their own on both the phone and the PC."
+    "NEXUS Lab download: Teacher or Student setup, locked student PCs (PIN to change or remove)",
+    "Lab security: only the teacher's PC can watch or control, screens are encrypted",
+    "Class tools: block apps and websites, live alerts, power the room, class reports",
+    "Calls and SMS on the PC: see who is calling, read and answer texts",
+    "Backup of folders to a USB drive",
+    "Animated guides in the phone app"
   ],
   "notesSq": [
-    "Kyçja e aplikacionit: kërko gjurmën e gishtit ose kyçjen e ekranit për ta hapur NEXUS — dhe përsëri para një fshirjeje në distancë — që një telefon i humbur ose i dhënë dikët të mos mund ta kontrollojë ose ta fshijë kompjuterin. Aktivizoje te Cilësimet › Siguria e pajisjes.",
-    "Përditësimet vazhdojnë të shfaqen vetë si në telefon ashtu edhe në kompjuter."
+    "Shkarkimi NEXUS Lab: instalim për mësuesin ose nxënësin, kompjuterë nxënësish të bllokuar (PIN për ndryshim ose heqje)",
+    "Siguria e Lab: vetëm kompjuteri i mësuesit mund të shikojë ose kontrollojë, ekranet janë të koduara",
+    "Mjete për orën: blloko aplikacione dhe faqe, njoftime të menjëhershme, ndiz e fik klasën, raporte",
+    "Thirrjet dhe SMS në kompjuter: shiko kush telefonon, lexo dhe përgjigju mesazheve",
+    "Kopje rezervë e dosjeve në USB",
+    "Udhëzues të animuar në aplikacionin e telefonit"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.5/NEXUS-Agent-Setup-0.5.5.exe",
-    "sha256": "c3b66650f3898bd7c3716f949414688b2f6121f40628ee35a768f747dd6e08e4",
-    "bytes": 89285131
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-Agent-Setup-0.5.6.exe",
+    "sha256": "9dfb0bf7431c81c8ee87a95d834aa5e887fb84dcf648211369ad533d5981b22d",
+    "bytes": 89303775
+  },
+  "windowsLab": {
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-Lab-Setup-0.5.6.exe",
+    "sha256": "80dc22dffd4ffd18bca716f2e297fa94337f1738cbffeba2ceabdf7510fe94fd",
+    "bytes": 89304210
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.5/NEXUS-0.5.5.apk",
-    "sha256": "a72c88e57efc136ef4f30ec602fd33768e94a2fd52929001c71e502880633ebd",
-    "bytes": 48166714
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-0.5.6.apk",
+    "sha256": "afe0adf2d9abb8728a0879d15cacec20d373313b621c5392e825b540afeb2f38",
+    "bytes": 48207698
   }
 }
