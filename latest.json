@@ -1,35 +1,31 @@
 {
-  "version": "0.5.6",
+  "version": "0.5.7",
   "date": "2026-11-20",
   "notes": [
-    "NEXUS Lab download: Teacher or Student setup, locked student PCs (PIN to change or remove)",
-    "Lab security: only the teacher's PC can watch or control, screens are encrypted",
-    "Class tools: block apps and websites, live alerts, power the room, class reports",
+    "NEXUS on the PC is its own app now: no more browser window or 'can't reach' page",
+    "Photo sync: new phone photos copy to the PC by themselves (Pictures\\NEXUS Photos)",
     "Calls and SMS on the PC: see who is calling, read and answer texts",
-    "Backup of folders to a USB drive",
-    "Animated guides in the phone app"
+    "Fixes for NEXUS Lab and the class tools"
   ],
   "notesSq": [
-    "Shkarkimi NEXUS Lab: instalim për mësuesin ose nxënësin, kompjuterë nxënësish të bllokuar (PIN për ndryshim ose heqje)",
-    "Siguria e Lab: vetëm kompjuteri i mësuesit mund të shikojë ose kontrollojë, ekranet janë të koduara",
-    "Mjete për orën: blloko aplikacione dhe faqe, njoftime të menjëhershme, ndiz e fik klasën, raporte",
+    "NEXUS në kompjuter është tani aplikacion më vete: pa dritare shfletuesi dhe pa faqen 'can't reach'",
+    "Sinkronizimi i fotove: fotot e reja të telefonit kopjohen vetë në kompjuter (Pictures\\NEXUS Photos)",
     "Thirrjet dhe SMS në kompjuter: shiko kush telefonon, lexo dhe përgjigju mesazheve",
-    "Kopje rezervë e dosjeve në USB",
-    "Udhëzues të animuar në aplikacionin e telefonit"
+    "Rregullime për NEXUS Lab dhe mjetet e orës"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-Agent-Setup-0.5.6.exe",
-    "sha256": "9dfb0bf7431c81c8ee87a95d834aa5e887fb84dcf648211369ad533d5981b22d",
-    "bytes": 89303775
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.7/NEXUS-Agent-Setup-0.5.7.exe",
+    "sha256": "0d7d65d33d952f29e142c5b6b34ce3c55b123664fe948139c44460e55158d8a6",
+    "bytes": 89469569
   },
   "windowsLab": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-Lab-Setup-0.5.6.exe",
-    "sha256": "80dc22dffd4ffd18bca716f2e297fa94337f1738cbffeba2ceabdf7510fe94fd",
-    "bytes": 89304210
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.7/NEXUS-Lab-Setup-0.5.7.exe",
+    "sha256": "f50710c801508500a49df1a89b7537ca9858ee53275ca4f782ffc9eb8ca5645b",
+    "bytes": 89469984
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.6/NEXUS-0.5.6.apk",
-    "sha256": "afe0adf2d9abb8728a0879d15cacec20d373313b621c5392e825b540afeb2f38",
-    "bytes": 48207698
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.7/NEXUS-0.5.7.apk",
+    "sha256": "e272dfefab21849681efe9c48791bebbfe0e85cb767d51cd786bcc6cc608523c",
+    "bytes": 48224594
   }
 }
