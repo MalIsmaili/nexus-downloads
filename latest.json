@@ -1,35 +1,35 @@
 {
-  "version": "0.5.8",
+  "version": "0.5.9",
   "date": "2026-11-22",
   "notes": [
-    "Walk-up unlock and Bluetooth lock: the PC locks when your phone walks away and unlocks when it comes back",
-    "Nearest PC: your phone finds the PC next to you by sound",
-    "Motion: air mouse, flick to change slides, face down = quiet, flick a photo to the PC",
-    "AR view, All my PCs, full-screen landscape PC view",
-    "Security: tamper alarm, pairing alerts and an activity log",
-    "NEXUS Lab: eyes on the teacher, open a link on every PC, exam mode"
+    "Phone as webcam: your phone's camera in Meet, Teams, Zoom and Discord (Windows 11)",
+    "Quick reply: answer WhatsApp and Messages from the PC notification",
+    "Continue on phone: walk away and the page you had open is one tap away on your phone",
+    "Find my phone from the PC, and a weekly security report",
+    "Automations: pause media when you leave or get a call, phone battery alerts, wake the PC when you join home Wi-Fi, copy on one and paste on the other",
+    "Bluetooth lock no longer locks while you sit at the desk"
   ],
   "notesSq": [
-    "Zhbllokim kur afrohesh dhe kyçje me Bluetooth: kompjuteri kyçet kur largohet telefoni dhe zhbllokohet kur kthehet",
-    "Kompjuteri më afër: telefoni gjen me zë kompjuterin pranë teje",
-    "Lëvizje: mi në ajër, ndërro sllajdet me një lëvizje, telefoni përmbys = qetësi, dërgo foton te kompjuteri",
-    "Pamja AR, Të gjithë kompjuterët, pamje e plotë horizontale",
-    "Siguria: alarm për ndërhyrje, njoftime çiftimi dhe regjistër aktiviteti",
-    "NEXUS Lab: sytë te mësuesi, hap një lidhje në çdo kompjuter, modaliteti i provimit"
+    "Telefoni si kamerë: kamera e telefonit në Meet, Teams, Zoom dhe Discord (Windows 11)",
+    "Përgjigje e shpejtë: përgjigju në WhatsApp dhe Mesazhe nga njoftimi në kompjuter",
+    "Vazhdo në telefon: largohu dhe faqja që kishe hapur është një prekje larg në telefon",
+    "Gjej telefonin nga kompjuteri dhe raport javor i sigurisë",
+    "Automatizime: ndalo median kur largohesh ose të telefonojnë, njoftime për baterinë, ndiz kompjuterin kur lidhesh me Wi-Fi e shtëpisë, kopjo në njërin dhe ngjit në tjetrin",
+    "Kyçja me Bluetooth nuk kyç më kur je ulur te tavolina"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.8/NEXUS-Agent-Setup-0.5.8.exe",
-    "sha256": "cf2768a879bce33b9a9163bbc29f46d81c0272defe231d116407560f2e83e505",
-    "bytes": 89511633
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-Agent-Setup-0.5.9.exe",
+    "sha256": "63f6fe96b5c0476e556ecd56c2c3b2e04b9551be91c330cbe69ae35d375a51bd",
+    "bytes": 89598874
   },
   "windowsLab": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.8/NEXUS-Lab-Setup-0.5.8.exe",
-    "sha256": "06b7412c858d96c7fb1ffbe9a9bec192a14aa54c516a5ded84d1882e36cfcc25",
-    "bytes": 89511993
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-Lab-Setup-0.5.9.exe",
+    "sha256": "0e84ad3a4be867799b7bb66db9dbe6b327c5ca9c22702c96ff470da56cb02767",
+    "bytes": 89599290
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.8/NEXUS-0.5.8.apk",
-    "sha256": "467e17b44e3d2928bcf6dfbfaaaf497c32bbee5b01c798ef159e0e3d7adb2642",
-    "bytes": 48301742
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-0.5.9.apk",
+    "sha256": "439385ac1edc070fb4ab22e4acb8e5f8ae47f2acf9345808d7812662fca9d039",
+    "bytes": 48323406
   }
 }
