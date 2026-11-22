@@ -68,6 +68,12 @@ h1 em{font-style:normal;color:var(--indigo)}
 .lead{color:var(--mute);font-size:clamp(17px,1.6vw,19px);max-width:34em;margin-bottom:32px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .note{margin-top:16px;color:var(--dim);font-size:13px}
+.fix{margin-top:28px;padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.fix h3{margin:0 0 8px}
+.fix p{margin:0;color:var(--dim);line-height:1.6}
+.cmd{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.cmd code{flex:1;min-width:220px;padding:12px 16px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);font:600 15px/1.4 ui-monospace,Consolas,monospace;color:var(--teal,#2DD4BF);user-select:all}
+.cmd .btn{padding:11px 18px}
 
 /* Demo: phone drives PC */
 .demo{position:relative;height:470px}
@@ -407,6 +413,12 @@ footer .r{margin-left:auto;color:var(--dim)}
       </div>
     </div>
     <p class="dnote rv"><span data-i="ln">Setup needs an administrator. Student PCs must use standard (non-administrator) Windows accounts. Setting up many PCs: NEXUS-Lab-Setup.exe /VERYSILENT /ROLE=student /CODE=… /PIN=…</span></p>
+    <div class="fix rv">
+      <h3 data-i="lfx">Screens not loading?</h3>
+      <p data-i="lfxp">NEXUS shows the room's screens as live video with <b>FFmpeg</b>, a free video tool. It comes inside the NEXUS installer, but some school PCs block it (antivirus or school policy), and then the teacher PC stays on "Loading…". Install FFmpeg with Windows' own app installer: on the <b>teacher PC</b> (and on student PCs if they still do not show), open <b>Command Prompt</b>, paste this line, press Enter, then restart NEXUS (or the PC).</p>
+      <div class="cmd"><code id="ffcmd">winget install Gyan.FFmpeg</code><button class="btn g" type="button" onclick="navigator.clipboard.writeText(document.getElementById('ffcmd').textContent);this.firstChild.textContent=document.documentElement.lang==='sq'?'U kopjua':'Copied'"><span data-i="cpy">Copy</span></button></div>
+      <p class="note" data-i="lfxn">Still nothing? Check that every PC is on the same network as the teacher PC, and that NEXUS was installed as administrator (that lets it through Windows Firewall).</p>
+    </div>
   </div>
 </section>
 
@@ -420,7 +432,7 @@ footer .r{margin-left:auto;color:var(--dim)}
 
 <script>
 document.documentElement.classList.add('js');
-const SQ={e6:"Për shkollat",h2l:"NEXUS Lab për një klasë.",s2l:"Një shkarkim për çdo kompjuter në klasë. Instalimi pyet nëse kompjuteri është i mësuesit apo i një nxënësi.",lbadge:"MËSUESI + NXËNËSIT",
+const SQ={e6:"Për shkollat",lfx:"Ekranet nuk shfaqen?",lfxp:"NEXUS i shfaq ekranet e klasës si video live me <b>FFmpeg</b>, një mjet falas për video. Vjen brenda instaluesit të NEXUS, por disa kompjuterë shkollorë e bllokojnë (antivirusi ose rregullat e shkollës) dhe atëherë kompjuteri i mësuesit mbetet te \"Loading…\". Instaloje FFmpeg me instaluesin e vetë Windows: në <b>kompjuterin e mësuesit</b> (dhe te nxënësit nëse ende nuk shfaqen), hap <b>Command Prompt</b>, ngjit këtë rresht, shtyp Enter, pastaj rinis NEXUS (ose kompjuterin).",lfxn:"Ende asgjë? Kontrollo që çdo kompjuter është në të njëjtin rrjet me kompjuterin e mësuesit dhe që NEXUS u instalua si administrator (kështu kalon Windows Firewall).",cpy:"Kopjo",h2l:"NEXUS Lab për një klasë.",s2l:"Një shkarkim për çdo kompjuter në klasë. Instalimi pyet nëse kompjuteri është i mësuesit apo i një nxënësi.",lbadge:"MËSUESI + NXËNËSIT",
 l1:"<span>Në kompjuterin e mësuesit, hap <b>NEXUS-Lab-Setup-0.5.9.exe</b> dhe zgjidh <b>Teacher</b>. NEXUS tregon kodin e laboratorit.</span>",
 l2:"<span>Në çdo kompjuter nxënësi, zgjidh <b>Student</b>, shkruaj kodin dhe vendos një PIN administratori.</span>",
 l3:"<span>Mësuesi sheh çdo ekran, drejton orën dhe ndez e fik klasën. Nxënësit nuk mund ta ndalojnë ndarjen apo ta çinstalojnë pa PIN-in.</span>",
