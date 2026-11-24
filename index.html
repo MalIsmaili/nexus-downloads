@@ -12,22 +12,34 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F3EDE3'/%3E%3Cg transform='rotate(-18 52 49)'%3E%3Cellipse cx='52' cy='49' rx='43' ry='15.5' fill='none' stroke='%232F9E5B' stroke-width='6'/%3E%3C/g%3E%3Cpath d='M30 78V24h13l18 30V24h13v54H61L43 48v30z' fill='%23C2410C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 /* Layout: a live phone-drives-PC demo opens the page; below it, plain sections that each answer one question, ending at the two installers. */
+/* Warm Paper, like the NEXUS apps: soft off-white paper, white cards with a warm outline on a
+   little ledge, one tangerine accent and a green one, Nunito. Night: the same warmth in cocoa. */
 :root{
-  --bg:#0C0E12; --bg2:#12151B; --card:#171B22; --line:#252A34; --line2:#323947;
-  --ink:#EDEFF4; --mute:#939AAA; --dim:#646B7B;
-  --indigo:#8B93FF; --teal:#2DD4BF; --navy:#0B1030;
-  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --body:Inter,"Segoe UI",system-ui,sans-serif;
+  --bg:#F7F3EC; --bg2:#FFFFFF; --card:#FFFFFF; --line:#EFE7DA; --line2:#E2D6C4; --edge:#E9DFCF;
+  --ink:#1F1B16; --mute:#5F574D; --dim:#6E655A;
+  --indigo:#C2410C; --indigo-edge:#8F320A; --on-accent:#FFFFFF; --teal:#2F9E5B; --navy:#F3EDE3;
+  --nav:rgba(247,243,236,.82); --well:#FBF7F1; --float:#FFFFFF; --deep:rgba(95,70,40,.16);
+  --display:Nunito,"Segoe UI",system-ui,sans-serif;
+  --body:Nunito,"Segoe UI",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-  --r:20px; --ease:cubic-bezier(.2,.8,.2,1);
-  color-scheme:dark;
+  --r:22px; --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#17130F; --bg2:#221D18; --card:#221D18; --line:#3A3129; --line2:#4A3F34; --edge:#0E0B08;
+    --ink:#F6EFE6; --mute:#C7BBAD; --dim:#A69A8C;
+    --indigo:#FF7A33; --indigo-edge:#B8460A; --on-accent:#1F1206; --teal:#5CCB8A; --navy:#2A241E;
+    --nav:rgba(23,19,15,.78); --well:rgba(0,0,0,.25); --float:#2A241E; --deep:rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font:600 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
@@ -38,7 +50,7 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance}
 .teal{color:var(--teal)}
 
 /* Nav */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(12,14,18,.75);border-bottom:1px solid transparent;transition:border-color .3s}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--nav);border-bottom:1px solid transparent;transition:border-color .3s}
 nav.s{border-color:var(--line)}
 nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;font:800 17px var(--display);letter-spacing:.18em}
@@ -49,8 +61,11 @@ nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
 .lang:hover{border-color:var(--line2)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s,background .25s}
 .btn:hover{transform:translateY(-2px)}
-.btn.p{background:var(--indigo);color:#0A0D1C;box-shadow:0 12px 32px -12px rgba(139,147,255,.7)}
-.btn.g{border-color:var(--line);background:var(--card)}
+.btn:active{transform:translateY(3px)}
+.btn.p{background:var(--indigo);color:var(--on-accent);font-weight:800;box-shadow:0 4px 0 var(--indigo-edge)}
+.btn.p:active{box-shadow:0 1px 0 var(--indigo-edge)}
+.btn.g{border:1.5px solid var(--line2);background:var(--card);font-weight:800;box-shadow:0 4px 0 var(--edge)}
+.btn.g:active{box-shadow:0 1px 0 var(--edge)}
 .btn.g:hover{border-color:var(--line2)}
 .btn svg{width:18px;height:18px;flex:none}
 nav .btn{padding:9px 16px;font-size:14px}
@@ -58,12 +73,12 @@ nav .btn{padding:9px 16px;font-size:14px}
 /* Hero */
 .hero{position:relative;padding:72px 0 40px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-260px -10% auto;height:760px;pointer-events:none;
-  background:radial-gradient(520px 320px at 28% 45%,rgba(139,147,255,.17),transparent 70%),radial-gradient(520px 320px at 78% 55%,rgba(45,212,191,.11),transparent 70%)}
+  background:radial-gradient(520px 320px at 28% 45%,color-mix(in srgb,var(--indigo) 17%,transparent),transparent 70%),radial-gradient(520px 320px at 78% 55%,color-mix(in srgb,var(--teal) 11%,transparent),transparent 70%)}
 .hgrid{position:relative;display:grid;grid-template-columns:1fr 1.08fr;gap:48px;align-items:center}
 .hgrid>*{min-width:0}
 .pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:5px 14px 5px 6px;font-size:13px;color:var(--mute)}
-.pill b{background:rgba(45,212,191,.14);color:var(--teal);border-radius:99px;padding:2px 9px;font:500 11px var(--mono);letter-spacing:.06em}
-h1{font-size:clamp(44px,6.4vw,84px);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:22px 0 22px}
+.pill b{background:color-mix(in srgb,var(--teal) 14%,transparent);color:var(--teal);border-radius:99px;padding:2px 9px;font:500 11px var(--mono);letter-spacing:.06em}
+h1{font-size:clamp(44px,6.4vw,84px);line-height:1;letter-spacing:-.03em;font-weight:900;margin:22px 0 22px}
 h1 em{font-style:normal;color:var(--indigo)}
 .lead{color:var(--mute);font-size:clamp(17px,1.6vw,19px);max-width:34em;margin-bottom:32px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
@@ -72,9 +87,9 @@ h1 em{font-style:normal;color:var(--indigo)}
 .fix h3{margin:0 0 8px}
 .fix p{margin:0;color:var(--dim);line-height:1.6}
 .cmd{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
-.cmd code{flex:1;min-width:220px;padding:12px 16px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);font:600 15px/1.4 ui-monospace,Consolas,monospace;color:var(--teal,#2DD4BF);user-select:all}
+.cmd code{flex:1;min-width:220px;padding:12px 16px;border-radius:12px;background:var(--well);border:1.5px solid var(--line);font:600 15px/1.4 ui-monospace,Consolas,monospace;color:var(--teal);user-select:all}
 .cmd .btn{padding:11px 18px}
-.cmd pre{flex:1;min-width:220px;margin:0;padding:12px 16px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);font:600 13.5px/1.6 ui-monospace,Consolas,monospace;color:#2DD4BF;white-space:pre-wrap;word-break:break-all;user-select:all}
+.cmd pre{flex:1;min-width:220px;margin:0;padding:12px 16px;border-radius:12px;background:var(--well);border:1.5px solid var(--line);font:600 13.5px/1.6 ui-monospace,Consolas,monospace;color:var(--teal);white-space:pre-wrap;word-break:break-all;user-select:all}
 
 /* Demo: phone drives PC */
 .demo{position:relative;height:470px}
@@ -116,7 +131,7 @@ h1 em{font-style:normal;color:var(--indigo)}
 .scr .h{color:var(--mute);font-size:11.5px}
 .pcn{font:700 17px var(--display);margin:1px 0 14px;display:flex;align-items:center;gap:8px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:ping 2s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(45,212,191,.55)}70%,100%{box-shadow:0 0 0 9px rgba(45,212,191,0)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--teal) 55%,transparent)}70%,100%{box-shadow:0 0 0 9px rgba(45,212,191,0)}}
 .dot.asleep{background:#F5A524;animation:none}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .act{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;font-size:12px;font-weight:600;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
@@ -124,7 +139,7 @@ h1 em{font-style:normal;color:var(--indigo)}
 .act:active{transform:scale(.97)}
 .act svg{width:18px;height:18px;display:block;margin-bottom:6px;color:var(--indigo)}
 .act:nth-child(even) svg{color:var(--teal)}
-.act.on{border-color:var(--indigo);background:rgba(139,147,255,.1)}
+.act.on{border-color:var(--indigo);background:color-mix(in srgb,var(--indigo) 10%,transparent)}
 .hint{margin-top:auto;color:var(--dim);font-size:11px;text-align:center}
 .toast{position:absolute;left:10px;right:10px;bottom:10px;background:#1D222B;border:1px solid var(--line2);border-radius:14px;padding:10px 12px;font-size:11.5px;color:var(--mute);transform:translateY(140%);transition:transform .45s var(--ease)}
 .toast.on{transform:none}
@@ -133,26 +148,26 @@ h1 em{font-style:normal;color:var(--indigo)}
 /* Sections */
 section{padding-block:104px}
 .eyebrow{color:var(--teal)}
-h2{font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.03em;font-weight:800;margin:14px 0 16px;max-width:16em}
+h2{font-size:clamp(32px,4.4vw,54px);line-height:1.06;letter-spacing:-.025em;font-weight:900;margin:14px 0 16px;max-width:16em}
 .sub{color:var(--mute);font-size:18px;max-width:36em}
 
 .feat{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:52px}
-.f{grid-column:span 2;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:border-color .3s}
+.f{grid-column:span 2;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 4px 0 var(--edge);transition:border-color .3s}
 .f:hover{border-color:var(--line2)}
 .f.w{grid-column:span 3}
-.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:rgba(139,147,255,.12);color:var(--indigo);margin-bottom:18px}
-.ic.t{background:rgba(45,212,191,.12);color:var(--teal)}
+.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--indigo) 12%,transparent);color:var(--indigo);margin-bottom:18px}
+.ic.t{background:color-mix(in srgb,var(--teal) 12%,transparent);color:var(--teal)}
 .ic svg{width:22px;height:22px}
-.f h3{font-size:20px;letter-spacing:-.01em;margin-bottom:6px;font-weight:700}
+.f h3{font-size:20px;letter-spacing:-.01em;margin-bottom:6px;font-weight:900}
 .f p{color:var(--mute);font-size:15px}
-.f .tag{display:inline-block;margin-top:14px;font:500 11px var(--mono);letter-spacing:.06em;color:var(--teal);background:rgba(45,212,191,.1);border-radius:6px;padding:3px 8px}
+.f .tag{display:inline-block;margin-top:14px;font:500 11px var(--mono);letter-spacing:.06em;color:var(--teal);background:color-mix(in srgb,var(--teal) 10%,transparent);border-radius:6px;padding:3px 8px}
 
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .split>*{min-width:0}
 .list{list-style:none;margin-top:28px;display:grid;gap:16px}
 .list li{display:flex;gap:14px;align-items:flex-start;color:var(--mute)}
 .list li b{color:var(--ink);display:block;font-weight:600}
-.chk{flex:none;width:24px;height:24px;border-radius:8px;background:rgba(45,212,191,.14);color:var(--teal);display:grid;place-items:center;margin-top:2px}
+.chk{flex:none;width:24px;height:24px;border-radius:8px;background:color-mix(in srgb,var(--teal) 14%,transparent);color:var(--teal);display:grid;place-items:center;margin-top:2px}
 .chk svg{width:14px;height:14px}
 .panel{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:22px}
 .panel .mono{color:var(--dim);margin:4px 4px 16px;display:block}
@@ -162,13 +177,13 @@ h2{font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.03em;font-
 .rule .d small{display:block;color:var(--mute);font-size:12.5px}
 .sw{flex:none;width:38px;height:22px;border-radius:99px;background:var(--teal);position:relative}
 .sw::after{content:"";position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff}
-.sw.x{background:#2A2F3A}.sw.x::after{right:auto;left:3px}
+.sw.x{background:var(--line2)}.sw.x::after{right:auto;left:3px}
 .summary{margin-top:14px;border:1px dashed var(--line2);border-radius:15px;padding:14px 15px;font-size:13px;color:var(--mute)}
 .summary b{color:var(--ink);display:block;font-size:13.5px;margin-bottom:2px}
 
-.sec{border-radius:30px;border:1px solid var(--line);background:radial-gradient(640px 300px at 88% 0%,rgba(139,147,255,.12),transparent 70%),var(--bg2);padding:60px}
+.sec{border-radius:32px;border:1.5px solid var(--line);box-shadow:0 4px 0 var(--edge);background:radial-gradient(640px 300px at 88% 0%,color-mix(in srgb,var(--indigo) 12%,transparent),transparent 70%),var(--bg2);padding:60px}
 .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
-.s{background:rgba(12,14,18,.6);border:1px solid var(--line);border-radius:18px;padding:22px}
+.s{background:var(--well);border:1.5px solid var(--line);border-radius:18px;padding:22px}
 .s h3{font-size:16.5px;margin-bottom:6px;font-weight:700}
 .s p{color:var(--mute);font-size:14px}
 
@@ -177,15 +192,15 @@ h2{font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.03em;font-
 .dl .sub{margin:0 auto;text-align:center}
 .dl .eyebrow{display:block;text-align:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
-.dc{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;transition:border-color .3s}
-.dc.rec{border-color:rgba(139,147,255,.55);box-shadow:0 0 0 4px rgba(139,147,255,.07)}
+.dc{background:var(--card);border:1.5px solid var(--line);border-radius:26px;box-shadow:0 4px 0 var(--edge);padding:28px;display:flex;flex-direction:column;transition:border-color .3s}
+.dc.rec{border-color:color-mix(in srgb,var(--indigo) 55%,transparent);box-shadow:0 0 0 4px color-mix(in srgb,var(--indigo) 7%,transparent)}
 .dc .top{display:flex;gap:16px;align-items:center}
-.dc .os{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(139,147,255,.12);color:var(--indigo);flex:none}
-.dc:nth-child(2) .os{background:rgba(45,212,191,.12);color:var(--teal)}
+.dc .os{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--indigo) 12%,transparent);color:var(--indigo);flex:none}
+.dc:nth-child(2) .os{background:color-mix(in srgb,var(--teal) 12%,transparent);color:var(--teal)}
 .dc .os svg{width:28px;height:28px}
-.dc h3{font-size:22px;font-weight:700}
+.dc h3{font-size:22px;font-weight:900}
 .dc .meta{color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums}
-.badge{margin-left:auto;align-self:flex-start;font:500 11px var(--mono);letter-spacing:.06em;color:var(--indigo);background:rgba(139,147,255,.12);border-radius:6px;padding:4px 8px;visibility:hidden}
+.badge{margin-left:auto;align-self:flex-start;font:500 11px var(--mono);letter-spacing:.06em;color:var(--indigo);background:color-mix(in srgb,var(--indigo) 12%,transparent);border-radius:6px;padding:4px 8px;visibility:hidden}
 .dc.rec .badge{visibility:visible}
 .steps{list-style:none;counter-reset:s;margin:24px 0 26px;display:grid;gap:12px}
 .steps li{counter-increment:s;display:flex;gap:12px;color:var(--mute);font-size:14.5px}
@@ -285,7 +300,7 @@ footer .r{margin-left:auto;color:var(--dim)}
           <div class="win"><div class="k" data-i="mem">Memory</div><div class="v">7.4 GB</div><div class="meter"><i style="--a:44%;--b:58%"></i></div></div>
           <div class="win"><div class="k">GPU</div><div class="v">41 °C</div><div class="meter"><i style="--a:20%;--b:46%"></i></div></div>
           <div class="win big"><div class="k" data-i="net">Network</div>
-            <svg viewBox="0 0 300 70" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8B93FF"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient></defs><path d="M0 55 C30 50 40 30 70 36 S120 60 150 40 200 12 230 26 270 44 300 18" fill="none" stroke="url(#sg)" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <svg viewBox="0 0 300 70" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#FF7A33"/><stop offset="1" stop-color="#5CCB8A"/></linearGradient></defs><path d="M0 55 C30 50 40 30 70 36 S120 60 150 40 200 12 230 26 270 44 300 18" fill="none" stroke="url(#sg)" stroke-width="3" stroke-linecap="round"/></svg></div>
           <div class="task"><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="view lock" data-v="lock"><div><svg class="ico"><use href="#i-lock"/></svg><div class="t" id="clock">22:40</div><div class="d" data-i="lockd">Locked from your phone</div></div></div>
@@ -315,14 +330,14 @@ footer .r{margin-left:auto;color:var(--dim)}
     <h2 class="rv" data-i="h2a">One app for everything your PC needs.</h2>
     <p class="sub rv" data-i="s2a">A phone app and a small PC app. They pair with a QR code and stay linked, on your Wi-Fi or across the world.</p>
     <div class="feat">
-      <div class="f w rv"><div class="ic"><svg><use href="#i-power"/></svg></div><h3 data-i="f1">Wake it from anywhere</h3><p data-i="f1p">Turn your PC on over mobile data. A spare phone at home acts as the Wake Relay, so it works even when the PC is fully shut down.</p></div>
+      <div class="f w rv"><div class="ic"><svg><use href="#i-power"/></svg></div><h3 data-i="f1">Wake it from anywhere</h3><p data-i="f1p">Turn your PC on over mobile data. A small ESP32 board or a spare phone at home acts as the Wake Relay, so it works even when the PC is fully shut down.</p></div>
       <div class="f w rv"><div class="ic t"><svg><use href="#i-lock"/></svg></div><h3 data-i="f2">Locks when you leave</h3><p data-i="f2p">Walk away from your desk or leave the house, and the PC locks within seconds. Come home and it wakes up for you.</p></div>
       <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 9l7 12 2-6 6-2z"/></svg></div><h3 data-i="f3">Full remote control</h3><p data-i="f3p">Touchpad, keyboard, media keys, volume per app, brightness, and closing frozen apps.</p></div>
       <div class="f rv"><div class="ic t"><svg><use href="#i-slides"/></svg></div><h3 data-i="f4">Presentation remote</h3><p data-i="f4p">Next and back, laser pointer, black screen and a timer. Your phone becomes the clicker.</p><span class="tag" data-i="new">NEW IN 0.5</span></div>
       <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 4h10l3 3v13H4V4z"/><path d="M12 10v6M9 13l3 3 3-3"/></g></svg></div><h3 data-i="f5">Files both ways</h3><p data-i="f5p">Send photos to the PC or documents to the phone. NEXUS asks before anything arrives.</p></div>
       <div class="f rv"><div class="ic t"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></g></svg></div><h3 data-i="f6">Parental control</h3><p data-i="f6p">Daily screen time, bedtime and app limits. Unlock extra time from your phone, and get a summary every evening at 21:00.</p></div>
       <div class="f rv"><div class="ic"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></g></svg></div><h3 data-i="f7">Disk cleaner</h3><p data-i="f7p">See what fills your drive and clear temp files, old downloads and the Recycle Bin.</p></div>
-      <div class="f rv"><div class="ic t"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></g></svg></div><h3 data-i="f8">NEXUS Lab</h3><p data-i="f8p">For classrooms and offices: create a lab from your phone and watch every PC in the room live, 30 frames a second.</p></div>
+      <div class="f rv"><div class="ic t"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></g></svg></div><h3 data-i="f8">NEXUS Lab</h3><p data-i="f8p">For classrooms and offices: watch every PC in the room live, 30 frames a second, even when the teacher PC is on another network.</p></div>
     </div>
   </div>
 </section>
@@ -455,14 +470,14 @@ dw:"Shkarko për Windows",da:"Merr aplikacionin Android",note:"Falas · Windows 
 mem:"Memoria",net:"Rrjeti",lockd:"Kyçur nga telefoni",slh:"Rishikimi tremujor",slp:"Sllajdi tjetër nga telefoni. Me tregues lazer.",
 conn:"I lidhur",mypc:"Kompjuteri im",q1:"Kyç",q2:"Gjumë",q3:"Ndiz",q4:"Prezanto",hint:"Prek një buton për ta provuar",
 e1:"Çfarë bën",h2a:"Një aplikacion për gjithçka që i duhet kompjuterit.",s2a:"Një aplikacion në telefon dhe një i vogël në kompjuter. Lidhen me një kod QR dhe qëndrojnë të lidhur, në Wi-Fi-n tënd apo në anën tjetër të botës.",
-f1:"Ndize nga kudo",f1p:"Ndize kompjuterin me internet celular. Një telefon rezervë në shtëpi bëhet Wake Relay, ndaj punon edhe kur kompjuteri është i fikur plotësisht.",
+f1:"Ndize nga kudo",f1p:"Ndize kompjuterin me internet celular. Një pllakë e vogël ESP32 ose një telefon rezervë në shtëpi bëhet Wake Relay, ndaj punon edhe kur kompjuteri është i fikur plotësisht.",
 f2:"Kyçet kur largohesh",f2p:"Largohu nga tavolina apo nga shtëpia dhe kompjuteri kyçet brenda pak sekondash. Kthehu në shtëpi dhe ndizet për ty.",
 f3:"Kontroll i plotë",f3p:"Miu me prekje, tastierë, muzikë, zëri për çdo aplikacion, ndriçimi dhe mbyllja e aplikacioneve të ngrira.",
 f4:"Telekomandë prezantimi",f4p:"Para dhe mbrapa, tregues lazer, ekran i zi dhe kohëmatës. Telefoni bëhet klikuesi yt.",new:"E RE NË 0.5",
 f5:"Skedarë në të dy anët",f5p:"Dërgo foto në kompjuter ose dokumente në telefon. NEXUS pyet para se të vijë diçka.",
 f6:"Kontroll prindëror",f6p:"Koha ditore para ekranit, ora e gjumit dhe kufij për aplikacionet. Jep kohë shtesë nga telefoni dhe merr një përmbledhje çdo mbrëmje në 21:00.",
 f7:"Pastruesi i diskut",f7p:"Shiko çfarë e mbush diskun dhe pastro skedarët e përkohshëm, shkarkimet e vjetra dhe koshin.",
-f8:"NEXUS Lab",f8p:"Për klasa dhe zyra: krijo një laborator nga telefoni dhe shiko live çdo kompjuter në sallë, 30 kuadro në sekondë.",
+f8:"NEXUS Lab",f8p:"Për klasa dhe zyra: shiko live çdo kompjuter në sallë, 30 kuadro në sekondë, edhe kur kompjuteri i mësuesit është në rrjet tjetër.",
 e2:"Autopilot",h2b:"Lëre te NEXUS.",s2b:"Vendose një herë. NEXUS kujdeset për kompjuterin natën dhe e bën gati para se ta duash.",
 l1:"Kujdes gjatë natës",l1p:"Pastron skedarët e përkohshëm, instalon përditësimet, kontrollon për viruse dhe diskun, pastaj fiket.",
 l2:"Gati për takime",l2p:"E ndez kompjuterin pesë minuta para një takimi në kalendar dhe hap lidhjen e Meet, Zoom ose Teams.",
