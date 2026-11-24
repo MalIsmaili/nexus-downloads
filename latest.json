@@ -1,35 +1,33 @@
 {
-  "version": "0.5.9",
-  "date": "2026-11-22",
+  "version": "0.6.4",
+  "date": "2026-11-24",
   "notes": [
-    "Phone as webcam: your phone's camera in Meet, Teams, Zoom and Discord (Windows 11)",
-    "Quick reply: answer WhatsApp and Messages from the PC notification",
-    "Continue on phone: walk away and the page you had open is one tap away on your phone",
-    "Find my phone from the PC, and a weekly security report",
-    "Automations: pause media when you leave or get a call, phone battery alerts, wake the PC when you join home Wi-Fi, copy on one and paste on the other",
-    "Bluetooth lock no longer locks while you sit at the desk"
+    "New look on the PC: the Warm Paper design of the phone app, with a warm night theme in Windows dark mode",
+    "New NEXUS logo on the PC, the phone and the installer",
+    "Wake Relay board: a small ESP32 at home can wake your PCs instead of a phone, with updates over Wi-Fi",
+    "NEXUS Lab across networks: the teacher PC sees the room even on a different network, or when the school blocks PC-to-PC connections",
+    "Installing NEXUS on a PC that still has NEXUS Lab offers to remove Lab and keeps your pairing"
   ],
   "notesSq": [
-    "Telefoni si kamerë: kamera e telefonit në Meet, Teams, Zoom dhe Discord (Windows 11)",
-    "Përgjigje e shpejtë: përgjigju në WhatsApp dhe Mesazhe nga njoftimi në kompjuter",
-    "Vazhdo në telefon: largohu dhe faqja që kishe hapur është një prekje larg në telefon",
-    "Gjej telefonin nga kompjuteri dhe raport javor i sigurisë",
-    "Automatizime: ndalo median kur largohesh ose të telefonojnë, njoftime për baterinë, ndiz kompjuterin kur lidhesh me Wi-Fi e shtëpisë, kopjo në njërin dhe ngjit në tjetrin",
-    "Kyçja me Bluetooth nuk kyç më kur je ulur te tavolina"
+    "Pamje e re në kompjuter: dizajni Warm Paper i aplikacionit në telefon, me temë të ngrohtë nate kur Windows është në modalitet të errët",
+    "Logo e re e NEXUS në kompjuter, telefon dhe instalues",
+    "Pllaka Wake Relay: një ESP32 i vogël në shtëpi mund të ndezë kompjuterët në vend të një telefoni, me përditësime përmes Wi-Fi",
+    "NEXUS Lab mes rrjeteve: kompjuteri i mësuesit e sheh klasën edhe në rrjet tjetër, ose kur shkolla bllokon lidhjet mes kompjuterëve",
+    "Instalimi i NEXUS në kompjuter që ka ende NEXUS Lab ofron heqjen e Lab-it dhe e ruan çiftimin"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-Agent-Setup-0.5.9.exe",
-    "sha256": "63f6fe96b5c0476e556ecd56c2c3b2e04b9551be91c330cbe69ae35d375a51bd",
-    "bytes": 89598874
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.4/NEXUS-Agent-Setup-0.6.4.exe",
+    "sha256": "ab5dd365d5926a311f95c5afe0dbc977f20ec858a56bbf6579dfbcc5051d67f1",
+    "bytes": 89786505
   },
   "windowsLab": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-Lab-Setup-0.5.9.exe",
-    "sha256": "0e84ad3a4be867799b7bb66db9dbe6b327c5ca9c22702c96ff470da56cb02767",
-    "bytes": 89599290
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.4/NEXUS-Lab-Setup-0.6.4.exe",
+    "sha256": "1038db7d92a906f15e3296102ad54b177d25e3264f23d22aa65e04ad885d1175",
+    "bytes": 89786032
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.5.9/NEXUS-0.5.9.apk",
-    "sha256": "439385ac1edc070fb4ab22e4acb8e5f8ae47f2acf9345808d7812662fca9d039",
-    "bytes": 48323406
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.4/NEXUS-0.6.4.apk",
+    "sha256": "f11271abc76b71a752d74c4fbc747e21c19421819863dc786a84bc35fd0b161b",
+    "bytes": 49548159
   }
 }
