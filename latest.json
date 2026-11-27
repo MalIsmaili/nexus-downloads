@@ -1,31 +1,35 @@
 {
-  "version": "0.6.5",
-  "date": "2026-11-24",
+  "version": "0.6.6",
+  "date": "2026-11-27",
   "notes": [
-    "Wake Relay board: an alert on your phone when home loses power or internet, and when it is back",
-    "See whether a PC NEXUS cannot reach is on at home or off, and hear when it wakes up",
-    "Wake my PCs when I get home: the board wakes them when your phone joins the home Wi-Fi",
-    "New Wake Relay board firmware 0.3.0: tap Update on the Wake Relay board screen"
+    "Safer updates: an automatic update can no longer leave NEXUS unable to start",
+    "NEXUS Lab is now part of NEXUS: one installer, and the teacher PC keeps every NEXUS feature",
+    "NEXUS Lab needs only the lab code: no more administrator PIN",
+    "Lab screens now show on older and weaker PCs instead of staying black",
+    "The teacher PC is told when a student PC stops sharing, and NEXUS restarts by itself on student PCs",
+    "Uninstalling now removes all NEXUS data, so installing again starts fresh"
   ],
   "notesSq": [
-    "Pllaka Wake Relay: njoftim në telefon kur shtëpia mbetet pa rrymë ose internet, dhe kur rikthehet",
-    "Shih nëse një kompjuter që NEXUS nuk e arrin është i ndezur në shtëpi apo i fikur, dhe merr njoftim kur zgjohet",
-    "Ndiz kompjuterët kur arrij në shtëpi: pllaka i ndez kur telefoni lidhet me Wi-Fi e shtëpisë",
-    "Softuer i ri 0.3.0 për pllakën Wake Relay: prek Përditëso te ekrani i pllakës"
+    "Përditësime më të sigurta: një përditësim automatik nuk e lë më NEXUS pa u hapur",
+    "NEXUS Lab tani është pjesë e NEXUS: një instalues, dhe kompjuteri i mësuesit i mban të gjitha funksionet e NEXUS",
+    "NEXUS Lab kërkon vetëm kodin e laboratorit: nuk ka më PIN administratori",
+    "Ekranet e Lab tani shfaqen edhe në kompjuterë më të vjetër dhe më të dobët, në vend që të mbeten të zinj",
+    "Kompjuteri i mësuesit njoftohet kur një kompjuter nxënësi ndalon ndarjen, dhe NEXUS rihapet vetë te nxënësit",
+    "Çinstalimi tani i fshin të gjitha të dhënat e NEXUS, kështu që instalimi i ri fillon nga e para"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.5/NEXUS-Agent-Setup-0.6.5.exe",
-    "sha256": "2e27457e90a5a555dcfcd8bcfbdd7836073c3380e227d6cfc951a1e2c1a9afdd",
-    "bytes": 89765663
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-Agent-Setup-0.6.6.exe",
+    "sha256": "67660a9226a54902279c05d87c9932caf13986d416540aaa8aa28d57c955b5ac",
+    "bytes": 89768249
   },
   "windowsLab": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.5/NEXUS-Lab-Setup-0.6.5.exe",
-    "sha256": "eba87b8036c8b4ebd3c50c017185563ba5b6acb88edd8eb1284ce50b1e43b21c",
-    "bytes": 89765222
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-Agent-Setup-0.6.6.exe",
+    "sha256": "67660a9226a54902279c05d87c9932caf13986d416540aaa8aa28d57c955b5ac",
+    "bytes": 89768249
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.5/NEXUS-0.6.5.apk",
-    "sha256": "4b35855351a89415002481b4268c19d3d4e3d1d4438f083f57ac7a06ac0cf91e",
-    "bytes": 49554135
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-0.6.6.apk",
+    "sha256": "f9b4988420c7b2a07527e95b8d17484abf0dfa7e5e44f094aada695dc51373ba",
+    "bytes": 49552955
   }
 }
