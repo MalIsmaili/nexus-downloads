@@ -1,35 +1,37 @@
 {
-  "version": "0.6.6",
-  "date": "2026-11-27",
+  "version": "0.6.7",
+  "date": "2026-11-28",
   "notes": [
-    "Safer updates: an automatic update can no longer leave NEXUS unable to start",
-    "NEXUS Lab is now part of NEXUS: one installer, and the teacher PC keeps every NEXUS feature",
-    "NEXUS Lab needs only the lab code: no more administrator PIN",
-    "Lab screens now show on older and weaker PCs instead of staying black",
-    "The teacher PC is told when a student PC stops sharing, and NEXUS restarts by itself on student PCs",
-    "Uninstalling now removes all NEXUS data, so installing again starts fresh"
+    "NEXUS Lab: run the class from your phone (start a class with blocked apps and sites, lock every screen, wake or shut down the room, see who is online)",
+    "NEXUS Lab: add student PCs by address when the school network hides them",
+    "NEXUS Lab: screens that do not change use almost no network",
+    "New rules: when my phone arrives or leaves, when I come to the PC or walk away, and open a website or app",
+    "Follow me: a video that went to your phone comes back to the PC at the same second",
+    "Morning briefing: your day in one notification the first time you sit down at the PC",
+    "Smart charging: choose when to unplug your phone, and laptop battery reminders"
   ],
   "notesSq": [
-    "Përditësime më të sigurta: një përditësim automatik nuk e lë më NEXUS pa u hapur",
-    "NEXUS Lab tani është pjesë e NEXUS: një instalues, dhe kompjuteri i mësuesit i mban të gjitha funksionet e NEXUS",
-    "NEXUS Lab kërkon vetëm kodin e laboratorit: nuk ka më PIN administratori",
-    "Ekranet e Lab tani shfaqen edhe në kompjuterë më të vjetër dhe më të dobët, në vend që të mbeten të zinj",
-    "Kompjuteri i mësuesit njoftohet kur një kompjuter nxënësi ndalon ndarjen, dhe NEXUS rihapet vetë te nxënësit",
-    "Çinstalimi tani i fshin të gjitha të dhënat e NEXUS, kështu që instalimi i ri fillon nga e para"
+    "NEXUS Lab: drejto orën nga telefoni (fillo orën me aplikacione dhe faqe të bllokuara, kyç çdo ekran, ndiz ose fik klasën, shih kush është i lidhur)",
+    "NEXUS Lab: shto kompjuterët e nxënësve me adresë kur rrjeti i shkollës i fsheh",
+    "NEXUS Lab: ekranet që nuk ndryshojnë pothuajse nuk përdorin rrjet",
+    "Rregulla të reja: kur telefoni mbërrin ose largohet, kur vij te kompjuteri ose largohem, dhe hap një faqe ose aplikacion",
+    "Më ndiq: një video që kaloi në telefon kthehet në kompjuter në të njëjtën sekondë",
+    "Përmbledhja e mëngjesit: dita jote në një njoftim herën e parë që ulesh te kompjuteri",
+    "Karikim i zgjuar: zgjidh kur ta heqësh telefonin nga karikuesi, dhe kujtesa për baterinë e laptopit"
   ],
   "windows": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-Agent-Setup-0.6.6.exe",
-    "sha256": "67660a9226a54902279c05d87c9932caf13986d416540aaa8aa28d57c955b5ac",
-    "bytes": 89768249
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.7/NEXUS-Agent-Setup-0.6.7.exe",
+    "sha256": "1b77021379f9f5b0711b73ee55ebe5859cf70e4ff337365c4ee7dd641854080b",
+    "bytes": 89788258
   },
   "windowsLab": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-Agent-Setup-0.6.6.exe",
-    "sha256": "67660a9226a54902279c05d87c9932caf13986d416540aaa8aa28d57c955b5ac",
-    "bytes": 89768249
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.7/NEXUS-Agent-Setup-0.6.7.exe",
+    "sha256": "1b77021379f9f5b0711b73ee55ebe5859cf70e4ff337365c4ee7dd641854080b",
+    "bytes": 89788258
   },
   "android": {
-    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.6/NEXUS-0.6.6.apk",
-    "sha256": "f9b4988420c7b2a07527e95b8d17484abf0dfa7e5e44f094aada695dc51373ba",
-    "bytes": 49552955
+    "url": "https://github.com/MalIsmaili/nexus-downloads/releases/download/v0.6.7/NEXUS-0.6.7.apk",
+    "sha256": "992301a3e644922fd846955b31818029be0aa4e9915746dfbff5ba8cd0db2f6d",
+    "bytes": 49573451
   }
 }
